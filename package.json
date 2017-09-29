@@ -4,11 +4,15 @@
   "description": "Generate duplicati backup configs from a flat file",
   "main": "src/index.mjs",
   "files": [
+    "bin",
     "src",
     "yarn.lock"
   ],
+  "bin": {
+    "duplicati-config-generate": "bin/duplicati-config-generate.js"
+  },
   "scripts": {
-    "start": "node --experimental-modules index.mjs",
+    "start": "bin/duplicati-config-generate.js",
     "test": "run-p lint",
     "lint": "standard",
     "precommit": "lint-staged"
@@ -27,7 +31,10 @@
   "author": "Hugo Josefson <hugo@josefson.org>",
   "license": "ISC",
   "engines": {
-    "node": ">=8.6"
+    "node": "8.6.0"
+  },
+  "@std/esm": {
+    "cjs": true
   },
   "devDependencies": {
     "husky": "^0.14.3",
@@ -36,6 +43,7 @@
     "standard": "^10.0.3"
   },
   "dependencies": {
+    "@std/esm": "^0.11.0",
     "highland": "^2.11.1"
   }
 }
