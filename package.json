@@ -1,5 +1,5 @@
 {
-  "name": "duplicati-config-generate",
+  "name": "duplicati-generate-config",
   "version": "1.0.0",
   "description": "Generate duplicati backup configs from a flat file",
   "main": "src/index.mjs",
@@ -8,10 +8,10 @@
     "src"
   ],
   "bin": {
-    "duplicati-config-generate": "bin/duplicati-config-generate.js"
+    "duplicati-generate-config": "bin/duplicati-generate-config.js"
   },
   "scripts": {
-    "start": "bin/duplicati-config-generate.js",
+    "start": "bin/duplicati-generate-config.js",
     "test": "run-p lint",
     "lint": "standard",
     "lint-fix": "standard --fix",

@@ -1,4 +1,4 @@
-# duplicati-config-generate
+# duplicati-generate-config
 
 *Generate [duplicati](https://www.duplicati.com/) backup configs from a flat file.*
 
@@ -15,13 +15,13 @@ nvm install stable
 ## Installation
 
 ```bash
-npm install -g duplicati-config-generate
+npm install -g duplicati-generate-config
 ```
 
 ## Usage
 
 ```bash
-duplicati-config-generate template-duplicati-config.json definitions.txt
+duplicati-generate-config template-duplicati-config.json definitions.txt
 ```
 
 Will read from `definitions.txt`, outputting config files to current directory, using exported `template-duplicati-config.json` as template.
