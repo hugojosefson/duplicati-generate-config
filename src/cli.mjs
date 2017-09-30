@@ -1,6 +1,4 @@
-import readFile from './read-file'
-import writeFile from './write-file'
-import templateToWriteSpecs from './template-to-write-specs'
+import { readFile, writeFile, templateToWriteSpecs } from './api'
 
 const templateFilename = process.argv[2]
 const definitionsFilename = process.argv[3]

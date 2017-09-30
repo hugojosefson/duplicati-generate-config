@@ -2,7 +2,8 @@
   "name": "duplicati-generate-config",
   "version": "1.0.0",
   "description": "Generate duplicati backup configs from a flat file",
-  "main": "src/index.mjs",
+  "main": "src/api-commonjs.js",
+  "module": "src/api.mjs",
   "files": [
     "bin",
     "src"
