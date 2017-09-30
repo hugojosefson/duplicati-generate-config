@@ -1,5 +1,5 @@
 import { URL } from 'url'
-import compose from './compose'
+import { compose } from './functional'
 import {
   removeRegex,
   removeAnyLeadingSlash,
@@ -11,12 +11,16 @@ const filterExpression = ignore => startsWithSlash(ignore) ? `/source${ignore}` 
 
 const targetUrl = (templateTargetUrl, name) => {
   const url = new URL(templateTargetUrl)
+
   url.hostname = compose(
-    removeRegex(/ to b2.*$/),
     removeAnyLeadingSlash,
-    cleanFilename
+    cleanFilename,
+    removeRegex(/ to b2.*$/)
   )(name)
-  url.path = ''
+
+  url.pathname = '/'
+
+  return url.toString()
 }
 
 export default template => ({name, source, ignores}) => ({
@@ -24,7 +28,7 @@ export default template => ({name, source, ignores}) => ({
   Backup: {
     ...template.Backup,
     Name: name,
-    TargetURL: targetUrl(template.Backup.TargetURL),
+    TargetURL: targetUrl(template.Backup.TargetURL, name),
     DBPath: undefined,
     Metadata: undefined,
     Sources: [

@@ -18,14 +18,14 @@ export { default as generateWriteSpecs } from './generate-write-specs'
  * @returns {Highland.<String>} A Highland Stream of one String, the entire contents of the file.
  * @name writeFile
  */
-export { default as readFile } from './read-file.mjs'
+export { default as readFile } from './read-file'
 
 /**
  * Writes a Highland Stream to a file.
  *
  * @param {string} filename - Filename to write to.
- * @param {Highland.<String>} contents - Highland Stream of one String, to write.
+ * @param {string} contents - String to write.
  * @returns {Highland.<String>} A Highland Stream of one String, the filename written.
  * @name writeFile
  */
-export { default as writeFile } from './write-file.mjs'
+export { default as writeFile } from './write-file'
