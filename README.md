@@ -22,7 +22,7 @@ Will read from `definitions.txt`, outputting config files to current directory, 
 
 ### Template file format
 
-Just export an existing configuration from duplicati.
+Export an existing configuration from duplicati, and use that file.
 
 ### Definitions file format
 
