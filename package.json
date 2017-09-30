@@ -14,6 +14,7 @@
     "start": "bin/duplicati-config-generate.js",
     "test": "run-p lint",
     "lint": "standard",
+    "lint-fix": "standard --fix",
     "precommit": "lint-staged"
   },
   "lint-staged": {
@@ -27,11 +28,13 @@
     "config",
     "backup"
   ],
-  "author": "Hugo Josefson <hugo@josefson.org>",
+  "author": "Hugo Josefson <hugo@josefson.org> (https://www.hugojosefson.com/)",
   "license": "ISC",
+  "comment-engines.node": "Not using babel, code seems to work from v8.3.0 and up.",
   "engines": {
     "node": ">=8.3.0"
   },
+  "comment-@std/esm.cjs": "Allow destructuring import from common-js modules.",
   "@std/esm": {
     "cjs": true
   },
