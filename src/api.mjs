@@ -6,7 +6,8 @@
  * template config file.
  * @param {Highland} definitionsFlatfileContents - Highland Stream of the contents of the backup
  * definitions flat file.
- * @return {Highland.<{filename, contents}>} A Highland Stream definitions of what to write to disk
+ * @returns {Highland.<{filename, contents}>} A Highland Stream definitions of what to write to disk
+ * @name generateWriteSpecs
  */
 export { default as generateWriteSpecs } from './generate-write-specs'
 
@@ -14,7 +15,8 @@ export { default as generateWriteSpecs } from './generate-write-specs'
  * Reads a file into a Highland Stream.
  *
  * @param {string} filename - Filename to read from.
- * @return {Highland.<String>} A Highland Stream of one String, the entire contents of the file.
+ * @returns {Highland.<String>} A Highland Stream of one String, the entire contents of the file.
+ * @name writeFile
  */
 export { default as readFile } from './read-file.mjs'
 
@@ -23,6 +25,7 @@ export { default as readFile } from './read-file.mjs'
  *
  * @param {string} filename - Filename to write to.
  * @param {Highland.<String>} contents - Highland Stream of one String, to write.
- * @return {Highland.<String>} A Highland Stream of one String, the filename written.
+ * @returns {Highland.<String>} A Highland Stream of one String, the filename written.
+ * @name writeFile
  */
 export { default as writeFile } from './write-file.mjs'
