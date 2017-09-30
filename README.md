@@ -2,6 +2,11 @@
 
 _Generate [duplicati](https://www.duplicati.com/) backup configs from a flat file._
 
+Currently hard-coded for:
+
+-   `TargetURL` expected to be for B2 Cloud Storage by Backblaze (`b2://...`).
+-   Filter expressions based on using [linuxserver/duplicati](https://hub.docker.com/r/linuxserver/duplicati/) in Docker.
+
 ## Prerequisite
 
 Node.js, at least `v8.3.0`.
