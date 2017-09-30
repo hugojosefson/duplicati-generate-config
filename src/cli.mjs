@@ -1,4 +1,10 @@
+import { basename } from 'path'
 import { readFile, writeFile, generateWriteSpecs } from './api'
+
+if (process.argv.length !== 4) {
+  console.error(`Usage: ${basename(process.argv[1])} <template-duplicati-config.json> <definitions.txt>`)
+  process.exit(1)
+}
 
 const templateFilename = process.argv[2]
 const definitionsFilename = process.argv[3]
