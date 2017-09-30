@@ -5,8 +5,7 @@
   "main": "src/index.mjs",
   "files": [
     "bin",
-    "src",
-    "yarn.lock"
+    "src"
   ],
   "bin": {
     "duplicati-config-generate": "bin/duplicati-config-generate.js"
