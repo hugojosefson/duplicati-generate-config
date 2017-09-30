@@ -17,7 +17,7 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.mjs": [
+    "*.{mjs,js,jsx}": [
       "standard --fix",
       "git add"
     ]
