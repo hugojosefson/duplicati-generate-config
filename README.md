@@ -20,7 +20,7 @@ nvm install stable
 ## Installation
 
 ```bash
-npm install -g duplicati-generate-config
+npm install -g hugojosefson/duplicati-generate-config
 ```
 
 ## Usage
