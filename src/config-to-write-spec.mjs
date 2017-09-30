@@ -1,8 +1,6 @@
-const cleanName = name => name
-  .replace(/[^a-zA-Z0-9_.-]+/g, '-')
-  .replace(/^[^a-zA-Z0-9]+/g, '')
+import { cleanFilename } from './string-manipulation'
 
 export default config => ({
   contents: JSON.stringify(config, null, 2),
-  filename: `${cleanName(config.Backup.Name)}-duplicati-config.json`
+  filename: `${cleanFilename(config.Backup.Name)}-duplicati-config.json`
 })

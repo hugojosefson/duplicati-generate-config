@@ -1,16 +1,30 @@
-const filterExpression = ignore => /^\//.test(ignore) ? `/source${ignore}` : ignore
+import { URL } from 'url'
+import compose from './compose'
+import {
+  removeRegex,
+  removeAnyLeadingSlash,
+  cleanFilename,
+  startsWithSlash
+} from './string-manipulation'
+
+const filterExpression = ignore => startsWithSlash(ignore) ? `/source${ignore}` : ignore
+
+const targetUrl = (templateTargetUrl, name) => {
+  const url = new URL(templateTargetUrl)
+  url.hostname = compose(
+    removeRegex(/ to b2.*$/),
+    removeAnyLeadingSlash,
+    cleanFilename
+  )(name)
+  url.path = ''
+}
 
 export default template => ({name, source, ignores}) => ({
   ...template,
   Backup: {
     ...template.Backup,
     Name: name,
-    TargetURL: template.Backup.TargetURL.replace(
-      /^(b2:\/\/[^/]+)\/[^?]+/,
-      '$1/' + name
-        .replace(/^\/+/, '')
-        .replace(/ to b2.*/, '')
-    ),
+    TargetURL: targetUrl(template.Backup.TargetURL),
     DBPath: undefined,
     Metadata: undefined,
     Sources: [
