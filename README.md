@@ -24,7 +24,7 @@ npm install -g duplicati-generate-config
 duplicati-generate-config template-duplicati-config.json definitions.txt
 ```
 
-Will read from `definitions.txt`, outputting config files to current directory, using exported `template-duplicati-config.json` as template.
+Will read from `definitions.txt`, outputting config files to current directory, using `template-duplicati-config.json` as template.
 
 ### Template file format
 
