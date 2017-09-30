@@ -73,3 +73,11 @@ code to b2 backblaze
 */node_modules/
 */target/
 ```
+
+## Programmatic access
+
+You can also `import` or `require` the module, and use its exported functions programmatically.
+
+They make use of [Highland.js](http://highlandjs.org/) streams.
+
+### API
