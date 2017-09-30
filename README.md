@@ -1,10 +1,16 @@
 # duplicati-config-generate
 
-*Generate [duplicati](https://www.duplicati.com/) backup configs from a flat file*
+*Generate [duplicati](https://www.duplicati.com/) backup configs from a flat file.*
 
 ## Prerequisite
 
-  * Node.js, quite new version. Works with 8.6.0.
+Node.js, at least `v8.3.0`.
+
+Recommended to install latest via [nvm](https://github.com/creationix/nvm#readme):
+
+```bash
+nvm install stable
+```
 
 ## Installation
 

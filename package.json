@@ -30,7 +30,7 @@
   "author": "Hugo Josefson <hugo@josefson.org>",
   "license": "ISC",
   "engines": {
-    "node": "8.6.0"
+    "node": ">=8.3.0"
   },
   "@std/esm": {
     "cjs": true
