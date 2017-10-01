@@ -1,12 +1,18 @@
-import { equal } from 'tap'
+/* eslint-env mocha */
+
+import { expect } from 'chai'
 import { compose } from '../src/functional'
 
-const expected = 'ABHELLO--THERE--ASDAD--3'
+describe('compose', () => {
+  it('should compose functions in correct order', () => {
+    const expected = 'ABHELLO--THERE--ASDAD--3'
 
-const actual = compose(
-  s => s.toUpperCase(),
-  s => `A${s}`,
-  (...args) => `B${args.join('--')}`
-)('hello', 'there', 'asdad', 3)
+    const actual = compose(
+      s => s.toUpperCase(),
+      s => `A${s}`,
+      (...args) => `B${args.join('--')}`
+    )('hello', 'there', 'asdad', 3)
 
-equal(actual, expected)
+    expect(actual).to.equal(expected)
+  })
+})

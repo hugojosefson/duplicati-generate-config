@@ -25,7 +25,7 @@ export default [{
       'ID': '3',
       'Name': 'virtual-machines/Keep to b2 backblaze',
       'Tags': [],
-      'TargetURL': 'b2://virtual-machines-Keep/?auth-username=6b871b52a751&auth-password=ba85238513ba',
+      'TargetURL': 'b2://duplicati-virtual-machines-Keep/?auth-username=6b871b52a751&auth-password=ba85238513ba',
       'Sources': [
         '/source/home/me/virtual-machines/Keep'
       ],

@@ -1,9 +1,18 @@
-import { test } from 'tap'
+/* eslint-env mocha */
+
+import { expect } from 'chai'
 
 import {
   cleanFilename,
   replaceRegex
 } from '../src/string-manipulation'
 
-test('replaceRegex', ({equal, done}) => equal(replaceRegex(/ugo/)('UGO')('Hugo Josefson'), 'HUGO Josefson') && done())
-test('cleanFilename', ({equal, done}) => equal(cleanFilename('/Important Downloads/here'), 'Important-Downloads-here') && done())
+describe('string-manipulation', () => {
+  it('replaceRegex should replace', () => {
+    expect(replaceRegex(/ugo/)('UGO')('Hugo Josefson')).to.equal('HUGO Josefson')
+  })
+
+  it('cleanFilename should clean up a filename', () => {
+    expect(cleanFilename('/Important Downloads/here')).to.equal('Important-Downloads-here')
+  })
+})

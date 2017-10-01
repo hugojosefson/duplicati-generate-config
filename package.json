@@ -13,8 +13,8 @@
   },
   "scripts": {
     "start": "bin/duplicati-generate-config.js",
-    "test": "run-s lint tap",
-    "tap": "tap --node-arg=--require --node-arg=@std/esm test/*-test.js",
+    "test": "run-s lint mocha",
+    "mocha": "mocha --require @std/esm",
     "lint": "standard",
     "lint-fix": "standard --fix",
     "prepare": "run-s documentation",
@@ -38,19 +38,20 @@
   "engines": {
     "node": ">=8.3.0"
   },
-  "comment-@std/esm.esm": "tap only sees test files named .js, so lets just go with that everywhere.",
+  "comment-@std/esm.esm": "tap only saw test files named .js, but what about mocha? can we rename them back to .mjs and stay in line with Node.js compat?",
   "comment-@std/esm.cjs": "Allow destructuring import from common-js modules.",
   "@std/esm": {
     "esm": "all",
     "cjs": true
   },
   "devDependencies": {
+    "chai": "^4.1.2",
     "documentation": "^5.3.2",
     "husky": "^0.14.3",
     "lint-staged": "^4.2.3",
+    "mocha": "^3.5.3",
     "npm-run-all": "^4.1.1",
-    "standard": "^10.0.3",
-    "tap": "^10.7.2"
+    "standard": "^10.0.3"
   },
   "dependencies": {
     "@std/esm": "^0.11.0",
