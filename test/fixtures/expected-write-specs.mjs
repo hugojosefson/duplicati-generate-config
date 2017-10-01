@@ -1,4 +1,6 @@
-export default [{
+const empty = n => ({filename: `${n}`, contents: '{}'})
+
+export default [...[1, 2, 3, 4, 5].map(empty), {
   filename: 'virtual-machines-Keep-to-b2-backblaze-duplicati-config.json',
   contents: JSON.stringify({
     'CreatedByVersion': '2.0.2.1',
