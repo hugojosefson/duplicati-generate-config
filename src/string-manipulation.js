@@ -17,3 +17,5 @@ export const cleanFilename = compose(
   removeInvalidLeadingFilenameChars,
   replaceInvalidFilenameCharsWith('-')
 )
+
+export const prepend = pre => s => `${pre}${s}`

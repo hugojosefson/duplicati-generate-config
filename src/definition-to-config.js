@@ -1,6 +1,7 @@
 import { URL } from 'url'
 import { compose } from './functional'
 import {
+  prepend,
   removeRegex,
   removeAnyLeadingSlash,
   cleanFilename,
@@ -13,6 +14,7 @@ const targetUrl = (templateTargetUrl, name) => {
   const url = new URL(templateTargetUrl)
 
   url.hostname = compose(
+    prepend('duplicati-'),
     removeAnyLeadingSlash,
     cleanFilename,
     removeRegex(/ to b2.*$/)
