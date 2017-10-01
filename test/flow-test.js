@@ -1,6 +1,5 @@
 import { test, threw } from 'tap'
 import { deepEqual } from 'assert'
-import _ from 'highland'
 import { generateWriteSpecs } from '../src/api'
 
 import templateConfig from './fixture-template-config'
@@ -24,10 +23,10 @@ const parseJson = prop => obj => ({...obj, [prop]: JSON.parse(obj[prop])})
 test('flow', Promise.resolve())
   .then(() =>
     generateWriteSpecs(
-      _(Promise.resolve(JSON.stringify(templateConfig))),
-      _(Promise.resolve(definitions))
+      Promise.resolve(JSON.stringify(templateConfig)),
+      Promise.resolve(definitions)
     )
-      .toArray(actualWriteSpecs => {
+      .then(actualWriteSpecs => {
         // console.log(actualWriteSpecs.map(parseJson('contents')).sort(compare('filename')))
         console.log(expectedWriteSpecs.map(parseJson('contents')).sort(compare('filename')))
         deepEqual(

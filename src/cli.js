@@ -10,10 +10,14 @@ const templateFilename = process.argv[2]
 const definitionsFilename = process.argv[3]
 
 generateWriteSpecs(readFile(templateFilename), readFile(definitionsFilename))
-  .flatMap(({filename, contents}) => writeFile(filename, contents))
-  .errors(err => {
+  .then(writeSpecs => writeSpecs
+    .map(({filename, contents}) => writeFile(filename, contents))
+    .map(writePromise => writePromise
+      .then(writtenFilename => console.log(`Written: ${writtenFilename}`))
+    )
+  )
+  .then(() => console.log('Done.'))
+  .catch(err => {
     console.error('Caught error:', err.stack)
     process.exit(1)
   })
-  .each(writtenFilename => console.log(`Written: ${writtenFilename}`))
-  .done(() => console.log('Done.'))

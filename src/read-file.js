@@ -1,6 +1,11 @@
-import { readFile } from 'fs'
-import _, { wrapCallback } from 'highland'
+const {readFile} = require('fs')
+const {promisify} = require('util')
+const {compose} = require('./functional')
 
-const readFileAsStream = wrapCallback(readFile)
+const FILE_DESCRIPTOR_STDIN = 0
+const readFileAsPromise = promisify(readFile)
 
-export default filename => filename === '-' ? _(process.stdin) : readFileAsStream(filename)
+export default compose(
+  file => readFileAsPromise(file, {encoding: 'utf8'}),
+  filename => filename === '-' ? FILE_DESCRIPTOR_STDIN : filename
+)

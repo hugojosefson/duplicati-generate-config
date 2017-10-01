@@ -1,6 +1,6 @@
 import { writeFile } from 'fs'
-import { wrapCallback } from 'highland'
+const {promisify} = require('util')
 
-const writeFileAsStream = wrapCallback(writeFile)
+const writeFileAsPromise = promisify(writeFile)
 
-export default (filename, contents) => writeFileAsStream(filename, contents).map(() => filename)
+export default (filename, contents) => writeFileAsPromise(filename, contents).then(() => filename)
