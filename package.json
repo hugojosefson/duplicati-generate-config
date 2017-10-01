@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Generate duplicati backup configs from a flat file",
   "main": "src/api-commonjs.js",
-  "module": "src/api.js",
+  "module": "src/api.mjs",
   "files": [
     "bin",
     "src"
@@ -14,11 +14,11 @@
   "scripts": {
     "start": "bin/duplicati-generate-config.js",
     "test": "run-s lint mocha",
-    "mocha": "mocha --require @std/esm",
+    "mocha": "mocha --require @std/esm 'test/**/*-test.{m,}js'",
     "lint": "standard",
     "lint-fix": "standard --fix",
     "prepare": "run-s documentation",
-    "documentation": "documentation readme --section=API --shallow --format=md src/api.js",
+    "documentation": "documentation readme --section=API --shallow --format=md src/api.mjs",
     "precommit": "lint-staged"
   },
   "lint-staged": {
@@ -38,10 +38,8 @@
   "engines": {
     "node": ">=8.3.0"
   },
-  "comment-@std/esm.esm": "tap only saw test files named .js, but what about mocha? can we rename them back to .mjs and stay in line with Node.js compat?",
   "comment-@std/esm.cjs": "Allow destructuring import from common-js modules.",
   "@std/esm": {
-    "esm": "all",
     "cjs": true
   },
   "devDependencies": {
