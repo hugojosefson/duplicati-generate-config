@@ -5,7 +5,7 @@ import { expect } from 'chai'
 import {
   cleanFilename,
   replaceRegex
-} from '../src/string-manipulation'
+} from '../src/extractable-modules/string-manipulation'
 
 describe('string-manipulation', () => {
   it('replaceRegex should replace', () => {

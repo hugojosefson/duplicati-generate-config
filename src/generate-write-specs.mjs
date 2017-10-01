@@ -1,5 +1,5 @@
-import definitionToConfig from './definition-to-config'
-import configToWriteSpec from './config-to-write-spec'
+import definitionToConfig from './transform/definition-to-config'
+import configToWriteSpec from './transform/config-to-write-spec'
 
 export default (templateFileContentsPromise, definitionsFlatfileContentsPromise) => templateFileContentsPromise
   .then(s => JSON.parse(s))

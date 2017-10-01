@@ -1,6 +1,6 @@
 const {readFile} = require('fs')
 const {promisify} = require('util')
-const {compose} = require('./functional')
+const {compose} = require('../extractable-modules/functional')
 
 const FILE_DESCRIPTOR_STDIN = 0
 const readFileAsPromise = promisify(readFile)

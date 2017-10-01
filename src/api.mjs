@@ -18,7 +18,7 @@ export { default as generateWriteSpecs } from './generate-write-specs'
  * @returns {Promise.<String>} A Promise of the contents of the file.
  * @name writeFile
  */
-export { default as readFile } from './read-file'
+export { default as readFile } from './io/read-file'
 
 /**
  * Writes to a file.
@@ -28,4 +28,4 @@ export { default as readFile } from './read-file'
  * @returns {Promise.<String>} A Promise of the filename written.
  * @name writeFile
  */
-export { default as writeFile } from './write-file'
+export { default as writeFile } from './io/write-file'

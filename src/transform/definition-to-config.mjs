@@ -1,12 +1,12 @@
 import { URL } from 'url'
-import { compose } from './functional'
+import { compose } from '../extractable-modules/functional'
 import {
   prepend,
   removeRegex,
   removeAnyLeadingSlash,
   cleanFilename,
   startsWithSlash
-} from './string-manipulation'
+} from '../extractable-modules/string-manipulation'
 
 const filterExpression = ignore => startsWithSlash(ignore) ? `/source${ignore}` : ignore
 

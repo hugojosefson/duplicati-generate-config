@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import { expect } from 'chai'
-import { compose } from '../src/functional'
+import { compose } from '../src/extractable-modules/functional'
 
 describe('compose', () => {
   it('should compose functions in correct order', () => {

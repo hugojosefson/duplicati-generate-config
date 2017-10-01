@@ -1,4 +1,4 @@
-import { cleanFilename } from './string-manipulation'
+import { cleanFilename } from '../extractable-modules/string-manipulation'
 
 export default config => ({
   contents: JSON.stringify(config, null, 2),
