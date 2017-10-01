@@ -2,6 +2,9 @@
 
 _Generate [duplicati](https://www.duplicati.com/) backup configs from a flat file._
 
+[![Build Status](https://travis-ci.org/hugojosefson/duplicati-generate-config.svg?branch=master)](https://travis-ci.org/hugojosefson/duplicati-generate-config)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
 Currently hard-coded for:
 
 -   `TargetURL` expected to be for B2 Cloud Storage by Backblaze (`b2://...`).
