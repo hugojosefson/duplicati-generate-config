@@ -2,13 +2,19 @@ const TEMPLATE = 'template.json'
 const DEFINITIONS = 'definitions.txt'
 const OUTPUT_DIR = 'output-dir'
 
-export default ({ readFile, writeFile, generateWriteSpecs }) => ({
+export default ({readFile, writeFile, generateWriteSpecs}) => ({
 
   command: [`generate <${TEMPLATE}> <${DEFINITIONS}> [${OUTPUT_DIR}]`, '*'],
 
   desc: 'Generates duplicati config files',
 
-  builder: argv => argv.default('output-dir', '.'),
+  builder: argv => argv
+    .option('o', {
+      alias: 'output-dir',
+      default: '.',
+      description: 'Where to write the generated config files.',
+      type: 'string'
+    }),
 
   handler: argv => {
     const templateFilename = argv[TEMPLATE]
