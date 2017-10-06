@@ -6,7 +6,7 @@ export default `# 1st line of every block is name of backup set.
 virtual-machines/Keep to b2 backblaze
 /home/me/virtual-machines/Keep
 
-Videos/programming to b2 backblaze
+Videos/Programming to b2 backblaze
 /home/me/Videos/Programming
 
 Important Downloads to b2 backblaze
