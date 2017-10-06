@@ -99,6 +99,7 @@ definitions of what to write to disk.
     template config file.
 -   `definitionsFlatfileContents` **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>** Promise of the contents of the backup
     definitions flat file.
+-   `outputDir` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Where to say in the returned writeDefinition to write the files.
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;\[{filename, contents}]>** A Promise definitions of what to write to disk
 

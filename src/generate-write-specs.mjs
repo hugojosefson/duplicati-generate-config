@@ -1,7 +1,7 @@
 import definitionToConfig from './transform/definition-to-config'
 import configToWriteSpec from './transform/config-to-write-spec'
 
-export default (templateFileContentsPromise, definitionsFlatfileContentsPromise) => templateFileContentsPromise
+export default (templateFileContentsPromise, definitionsFlatfileContentsPromise, outputDir = '.') => templateFileContentsPromise
   .then(s => JSON.parse(s))
   .then(template => definitionsFlatfileContentsPromise
     .then(definitions => definitions
@@ -14,4 +14,4 @@ export default (templateFileContentsPromise, definitionsFlatfileContentsPromise)
       .map(definitionToConfig(template))
     )
   )
-  .then(configs => configs.map(configToWriteSpec))
+  .then(configs => configs.map(configToWriteSpec(outputDir)))

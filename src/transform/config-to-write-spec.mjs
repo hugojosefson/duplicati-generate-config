@@ -1,6 +1,6 @@
 import { cleanFilename } from '../extractable-modules/string-manipulation'
 
-export default config => ({
+export default outputDir => config => ({
   contents: JSON.stringify(config, null, 2),
-  filename: `${cleanFilename(config.Backup.Name)}-duplicati-config.json`
+  filename: `${outputDir}/${cleanFilename(config.Backup.Name)}-duplicati-config.json`
 })

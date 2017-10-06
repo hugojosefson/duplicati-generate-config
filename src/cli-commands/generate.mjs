@@ -1,17 +1,21 @@
-const TEMPLATE = 'template-duplicati-config.json'
-const DEFINITIONS = 'backup-definitions.txt'
+const TEMPLATE = 'template.json'
+const DEFINITIONS = 'definitions.txt'
+const OUTPUT_DIR = 'output-dir'
 
 export default ({ readFile, writeFile, generateWriteSpecs }) => ({
 
-  command: [`generate <${TEMPLATE}> <${DEFINITIONS}>`, '*'],
+  command: [`generate <${TEMPLATE}> <${DEFINITIONS}> [${OUTPUT_DIR}]`, '*'],
 
   desc: 'Generates duplicati config files',
+
+  builder: argv => argv.default('output-dir', '.'),
 
   handler: argv => {
     const templateFilename = argv[TEMPLATE]
     const definitionsFilename = argv[DEFINITIONS]
+    const outputDir = argv[OUTPUT_DIR]
 
-    generateWriteSpecs(readFile(templateFilename), readFile(definitionsFilename))
+    generateWriteSpecs(readFile(templateFilename), readFile(definitionsFilename), outputDir)
       .then(writeSpecs => writeSpecs
         .map(({filename, contents}) => writeFile(filename, contents))
         .map(writePromise => writePromise

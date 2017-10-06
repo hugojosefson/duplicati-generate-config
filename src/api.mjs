@@ -6,6 +6,7 @@
  * template config file.
  * @param {Promise.<String>} definitionsFlatfileContents - Promise of the contents of the backup
  * definitions flat file.
+ * @param {String} outputDir - Where to say in the returned writeDefinition to write the files.
  * @returns {Promise.<[{filename, contents}]>} A Promise definitions of what to write to disk
  * @name generateWriteSpecs
  */
