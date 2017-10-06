@@ -21,35 +21,35 @@ const compare = prop => (a, b) => {
 
 const parseJson = prop => obj => ({...obj, [prop]: JSON.parse(obj[prop])})
 
-const produceResult = () => generateWriteSpecs(
+const expecteds = expectedWriteSpecs
+  .map(parseJson('contents'))
+  .sort(compare('filename'))
+
+const produceActuals = () => generateWriteSpecs(
   Promise.resolve(JSON.stringify(templateConfig)),
   Promise.resolve(definitions)
 )
-  .then(actualWriteSpecs => {
-    const actual = actualWriteSpecs
-      .map(parseJson('contents'))
-      .sort(compare('filename'))
-
-    const expected = expectedWriteSpecs
-      .map(parseJson('contents'))
-      .sort(compare('filename'))
-
-    return {actual, expected}
-  })
+  .then(actualWriteSpecs => actualWriteSpecs
+    .map(parseJson('contents'))
+    .sort(compare('filename'))
+  )
 
 describe('generateWriteSpecs', () => {
-  it('generates correct number of writeSpecs', done => {
-    produceResult()
-      .then(({actual, expected}) => {
-        expect(actual.length).to.equal(expected.length)
-      })
-      .then(() => done(), done)
+  let actuals
+
+  before(
+    () => produceActuals().then(result => { actuals = result })
+  )
+
+  it('generates correct number of writeSpecs', () => {
+    expect(actuals.length).to.equal(expecteds.length)
   })
-  it('generates correct writeSpecs', done => {
-    produceResult()
-      .then(({actual, expected}) => {
-        expect(actual).to.deep.equal(expected)
-      })
-      .then(() => done(), done)
+
+  expectedWriteSpecs.forEach((_, index) => {
+    const expected = expecteds[index]
+    it(`generates correct writeSpec for ${expected.filename}`, () => {
+      const actual = actuals[index]
+      expect(actual).to.deep.equal(expected)
+    })
   })
 })
