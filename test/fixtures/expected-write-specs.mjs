@@ -1,6 +1,6 @@
 export default [
   {
-    filename: 'Videos-Programming-to-b2-backblaze-duplicati-config.json',
+    filename: './Videos-Programming-to-b2-backblaze-duplicati-config.json',
     contents: JSON.stringify({
       'CreatedByVersion': '2.0.2.1',
       'Schedule': {
@@ -72,7 +72,7 @@ export default [
 
   },
   {
-    filename: 'code-old-stuff-to-b2-backblaze-duplicati-config.json',
+    filename: './code-old-stuff-to-b2-backblaze-duplicati-config.json',
     contents: JSON.stringify({
       'CreatedByVersion': '2.0.2.1',
       'Schedule': {
@@ -156,7 +156,7 @@ export default [
 
   },
   {
-    filename: 'code-to-b2-backblaze-duplicati-config.json',
+    filename: './code-to-b2-backblaze-duplicati-config.json',
     contents: JSON.stringify({
       'CreatedByVersion': '2.0.2.1',
       'Schedule': {
@@ -245,7 +245,7 @@ export default [
 
   },
   {
-    filename: 'home-me-to-b2-backblaze-duplicati-config.json',
+    filename: './home-me-to-b2-backblaze-duplicati-config.json',
     contents: JSON.stringify({
       'CreatedByVersion': '2.0.2.1',
       'Schedule': {
@@ -368,7 +368,7 @@ export default [
     }, null, 2)
   },
   {
-    filename: 'Important-Downloads-to-b2-backblaze-duplicati-config.json',
+    filename: './Important-Downloads-to-b2-backblaze-duplicati-config.json',
     contents: JSON.stringify({
       'CreatedByVersion': '2.0.2.1',
       'Schedule': {
@@ -439,7 +439,7 @@ export default [
     }, null, 2)
   },
   {
-    filename: 'virtual-machines-Keep-to-b2-backblaze-duplicati-config.json',
+    filename: './virtual-machines-Keep-to-b2-backblaze-duplicati-config.json',
     contents: JSON.stringify({
       'CreatedByVersion': '2.0.2.1',
       'Schedule': {
