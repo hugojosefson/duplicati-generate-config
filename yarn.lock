@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@std/esm@^0.11.0":
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/@std/esm/-/esm-0.11.1.tgz#ec1ddfee283303bccc72fb22c74b9a7df7b78aac"
+"@std/esm@^0.11.2":
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/@std/esm/-/esm-0.11.2.tgz#a9a7ea29aab276dbdbc633d08dde0896cce74e57"
 
 JSONStream@^1.0.3:
   version "1.3.1"
