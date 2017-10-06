@@ -53,6 +53,7 @@
   },
   "dependencies": {
     "@std/esm": "^0.11.2",
-    "engine-check": "^1.0.0"
+    "engine-check": "^1.0.0",
+    "yargs": "^9.0.1"
   }
 }
