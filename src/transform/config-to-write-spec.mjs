@@ -1,6 +1,18 @@
 import { cleanFilename } from '../extractable-modules/string-manipulation'
 
-export default ({outputDir, outputFilenameSuffix}) => config => ({
-  contents: JSON.stringify(config, null, 2),
-  filename: `${outputDir}/${cleanFilename(config.Backup.Name)}${outputFilenameSuffix}`
-})
+export default ({
+                  outputDir,
+                  outputFilenamePrefix,
+                  outputFilenameSuffix
+                }) =>
+  config =>
+    ({
+      contents: JSON.stringify(config, null, 2),
+      filename: [
+        outputDir,
+        '/',
+        outputFilenamePrefix,
+        cleanFilename(config.Backup.Name),
+        outputFilenameSuffix
+      ].join('')
+    })

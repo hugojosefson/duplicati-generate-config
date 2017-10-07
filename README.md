@@ -107,6 +107,7 @@ definitions of what to write to disk.
     -   `options.definitions` **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>** Promise of the contents of the backup definitions flat file.
     -   `options.outputDir` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Where to say in the returned writeDefinition to write the files. (optional, default `"."`)
     -   `options.sourcePathPrefix` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Prepended to each source path in the definitions, to the resulting config file. (optional, default `"/source"`)
+    -   `options.outputFilenamePrefix` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Prepended to each written config filename. (optional, default `""`)
     -   `options.outputFilenameSuffix` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Appended to each written config filename. (optional, default `"-duplicati-config.json"`)
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;\[{filename, contents}]>** A Promise definitions of what to write to disk

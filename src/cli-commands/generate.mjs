@@ -21,6 +21,11 @@ export default ({readFile, writeFile, generateWriteSpecs}) => ({
       description: 'Prepended to each source path in the definitions, to the resulting config file.',
       type: 'string'
     })
+    .option('output-filename-prefix', {
+      default: '',
+      description: 'Prepended to each written config filename.',
+      type: 'string'
+    })
     .option('output-filename-suffix', {
       default: '-duplicati-config.json',
       description: 'Appended to each written config filename.',
@@ -33,6 +38,7 @@ export default ({readFile, writeFile, generateWriteSpecs}) => ({
               outputDir,
               dryRun,
               sourcePathPrefix,
+              outputFilenamePrefix,
               outputFilenameSuffix
             }) =>
     generateWriteSpecs({
@@ -40,6 +46,7 @@ export default ({readFile, writeFile, generateWriteSpecs}) => ({
       definitions: readFile(definitionsFile),
       outputDir,
       sourcePathPrefix,
+      outputFilenamePrefix,
       outputFilenameSuffix
     })
       .then(writeSpecs => writeSpecs
