@@ -5,10 +5,8 @@ import {
   removeRegex,
   removeAnyLeadingSlash,
   cleanFilename,
-  startsWithSlash
+  filterExpression
 } from '../extractable-modules/string-manipulation'
-
-const filterExpression = ignore => startsWithSlash(ignore) ? `/source${ignore}` : ignore
 
 const targetUrl = (templateTargetUrl, name) => {
   const url = new URL(templateTargetUrl)
@@ -25,7 +23,7 @@ const targetUrl = (templateTargetUrl, name) => {
   return url.toString()
 }
 
-export default ({template, sourcePathPrefix}) => ({name, source, ignores}) => ({
+export default ({template, sourcePathPrefix = '/source'}) => ({name, source, ignores}) => ({
   ...template,
   Backup: {
     ...template.Backup,
@@ -39,7 +37,7 @@ export default ({template, sourcePathPrefix}) => ({name, source, ignores}) => ({
     Filters: ignores.map((ignore, index) => ({
       Order: index,
       Include: false,
-      Expression: filterExpression(ignore)
+      Expression: filterExpression(sourcePathPrefix)(ignore)
     }))
   },
   DisplayNames: {

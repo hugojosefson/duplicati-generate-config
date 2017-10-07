@@ -4,6 +4,10 @@ import { expect } from 'chai'
 import R from 'ramda'
 import { generateWriteSpecs } from '../src/api'
 
+import {
+  expectToStartWith,
+  expectToNotStartWith
+} from './expectation-utils'
 import templateConfig from './fixtures/template-config'
 import definitions from './fixtures/backup-definitions'
 import expectedWriteSpecs from './fixtures/expected-write-specs'
@@ -44,15 +48,11 @@ const expectAtPath = ({
                       }) =>
   produceActuals(options)
     .then(actuals => actuals
-      .map(({contents}) => contents)
       .map(R.path(typeof path === 'string' ? path.split('.') : path))
       .map(value => splitArrays ? (value.length ? value.map(item => Promise.resolve(item)) : value) : value)
       .map(valuePromises => valuePromises.map(valuePromise => valuePromise.then(expector)))
     )
     .then(promises => Promise.all(promises))
-
-const expectToStartWith = (actual, expectedStart) => expect(actual.substring(0, expectedStart.length)).to.equal(expectedStart)
-const expectToNotStartWith = (actual, expectedStart) => expect(actual.substring(0, expectedStart.length)).to.not.equal(expectedStart)
 
 describe('generateWriteSpecs', () => {
   describe('with default arguments', () => {
@@ -82,7 +82,7 @@ describe('generateWriteSpecs', () => {
   describe('sourcePathPrefix', () => {
     it('has default value of "/source"', () =>
       expectAtPath({
-        path: 'Backup.Sources',
+        path: 'contents.Backup.Sources',
         splitArrays: true,
         expector: source => expectToStartWith(source, '/source')
       })
@@ -92,7 +92,7 @@ describe('generateWriteSpecs', () => {
         options: {
           sourcePathPrefix: ''
         },
-        path: 'Backup.Sources',
+        path: 'contents.Backup.Sources',
         splitArrays: true,
         expector: source => expectToNotStartWith(source, '/source')
       })
@@ -102,7 +102,7 @@ describe('generateWriteSpecs', () => {
         options: {
           sourcePathPrefix: 'another-string'
         },
-        path: 'Backup.Sources',
+        path: 'contents.Backup.Sources',
         splitArrays: true,
         expector: source => expectToStartWith(source, 'another-string')
       })
@@ -112,7 +112,7 @@ describe('generateWriteSpecs', () => {
         options: {
           sourcePathPrefix: 'Another String'
         },
-        path: 'Backup.Sources',
+        path: 'contents.Backup.Sources',
         splitArrays: true,
         expector: source => expectToStartWith(source, 'Another String')
       })

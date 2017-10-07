@@ -4,10 +4,10 @@ import configToWriteSpec from './transform/config-to-write-spec'
 export default ({
                   template: templateFileContentsPromise,
                   definitions: definitionsFlatfileContentsPromise,
-                  outputDir = '.',
-                  sourcePathPrefix = '/source',
-                  outputFilenamePrefix = '',
-                  outputFilenameSuffix = '-duplicati-config.json'
+                  outputDir,
+                  sourcePathPrefix,
+                  outputFilenamePrefix,
+                  outputFilenameSuffix
                 }) =>
   templateFileContentsPromise
     .then(s => JSON.parse(s))

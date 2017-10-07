@@ -1,9 +1,12 @@
+import { path } from 'ramda'
+
 import { cleanFilename } from '../extractable-modules/string-manipulation'
 
 export default ({
-                  outputDir,
-                  outputFilenamePrefix,
-                  outputFilenameSuffix
+                  outputDir = '.',
+                  outputFilenamePrefix = '',
+                  outputFilename = path('Backup.Name'.split('.')),
+                  outputFilenameSuffix = '-duplicati-config.json'
                 }) =>
   config =>
     ({
@@ -12,7 +15,7 @@ export default ({
         outputDir,
         '/',
         outputFilenamePrefix,
-        cleanFilename(config.Backup.Name),
+        cleanFilename(outputFilename(config)),
         outputFilenameSuffix
       ].join('')
     })

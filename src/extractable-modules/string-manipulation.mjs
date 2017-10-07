@@ -19,3 +19,5 @@ export const cleanFilename = compose(
 )
 
 export const prepend = pre => s => `${pre}${s}`
+
+export const filterExpression = sourcePathPrefix => ignore => startsWithSlash(ignore) ? `${sourcePathPrefix}${ignore}` : ignore
