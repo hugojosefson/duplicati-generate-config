@@ -16,6 +16,11 @@ export default ({readFile, writeFile, generateWriteSpecs}) => ({
       description: 'Don\'t actually write any files.',
       type: 'boolean'
     })
+    .option('name-prefix', {
+      default: '',
+      description: 'Prepended to each backup set name the definitions, to the resulting config file',
+      type: 'string'
+    })
     .option('name-suffix', {
       default: ' to b2 backblaze',
       description: 'Appended to each backup set name the definitions, to the resulting config file',
@@ -42,6 +47,7 @@ export default ({readFile, writeFile, generateWriteSpecs}) => ({
               definitionsFile,
               outputDir,
               dryRun,
+              namePrefix,
               nameSuffix,
               sourcePathPrefix,
               outputFilenamePrefix,
@@ -51,6 +57,7 @@ export default ({readFile, writeFile, generateWriteSpecs}) => ({
       template: readFile(templateFile),
       definitions: readFile(definitionsFile),
       outputDir,
+      namePrefix,
       nameSuffix,
       sourcePathPrefix,
       outputFilenamePrefix,

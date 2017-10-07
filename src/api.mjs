@@ -6,6 +6,7 @@
  * @param {Promise.<String>} options.template - Promise of the contents of the duplicati template config file.
  * @param {Promise.<String>} options.definitions - Promise of the contents of the backup definitions flat file.
  * @param {String} [options.outputDir="."] - Where to say in the returned writeDefinition to write the files.
+ * @param {String} [options.namePrefix=""] - Prepended to each backup set name the definitions, to the resulting config file.
  * @param {String} [options.nameSuffix=" to b2 backblaze"] - Appended to each backup set name the definitions, to the resulting config file.
  * @param {String} [options.sourcePathPrefix="/source"] - Prepended to each source path in the definitions, to the resulting config file.
  * @param {String} [options.outputFilenamePrefix=""] - Prepended to each written config filename.

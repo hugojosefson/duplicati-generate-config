@@ -24,6 +24,7 @@ const targetUrl = (templateTargetUrl, name) => {
 export default ({
                   template,
                   sourcePathPrefix = '/source',
+                  namePrefix = '',
                   nameSuffix = ' to b2 backblaze'
                 }) =>
   ({name, source, ignores}) =>
@@ -31,7 +32,7 @@ export default ({
       ...template,
       Backup: {
         ...template.Backup,
-        Name: `${name}${nameSuffix}`,
+        Name: `${namePrefix}${name}${nameSuffix}`,
         TargetURL: targetUrl(template.Backup.TargetURL, name),
         DBPath: undefined,
         Metadata: undefined,
