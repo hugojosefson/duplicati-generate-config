@@ -14,7 +14,7 @@
   "scripts": {
     "start": "bin/duplicati-generate-config.js",
     "test": "run-s lint mocha",
-    "mocha": "mocha --require @std/esm 'test/**/*-test.{m,}js'",
+    "mocha": "mocha",
     "lint": "standard",
     "lint-fix": "standard --fix",
     "prepare": "run-s documentation",
