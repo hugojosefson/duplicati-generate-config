@@ -4,6 +4,7 @@ import { expect } from 'chai'
 
 import {
   cleanFilename,
+  cleanHostname,
   replaceRegex,
   filterExpression
 } from '../src/extractable-modules/string-manipulation'
@@ -18,6 +19,12 @@ describe('string-manipulation', () => {
   describe('cleanFilename', () => {
     it('should clean up a filename', () => {
       expect(cleanFilename('/Important Downloads/here')).to.equal('Important-Downloads-here')
+    })
+  })
+
+  describe('cleanHostname', () => {
+    it('is the same function as cleanFilename', () => {
+      expect(cleanHostname).to.equal(cleanFilename)
     })
   })
 

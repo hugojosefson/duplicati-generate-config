@@ -18,6 +18,8 @@ export const cleanFilename = compose(
   replaceInvalidFilenameCharsWith('-')
 )
 
+export const cleanHostname = cleanFilename
+
 export const prepend = pre => s => `${pre}${s}`
 
 export const filterExpression = sourcePathPrefix => ignore => startsWithSlash(ignore) ? `${sourcePathPrefix}${ignore}` : ignore

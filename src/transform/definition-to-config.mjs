@@ -4,7 +4,7 @@ import {
   prepend,
   removeRegex,
   removeAnyLeadingSlash,
-  cleanFilename,
+  cleanHostname,
   filterExpression
 } from '../extractable-modules/string-manipulation'
 
@@ -14,7 +14,7 @@ const targetUrl = (templateTargetUrl, name) => {
   url.hostname = compose(
     prepend('duplicati-'),
     removeAnyLeadingSlash,
-    cleanFilename,
+    cleanHostname,
     removeRegex(/ to b2.*$/)
   )(name)
 
