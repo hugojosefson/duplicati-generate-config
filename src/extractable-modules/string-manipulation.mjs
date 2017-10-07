@@ -1,4 +1,4 @@
-import { compose } from './functional'
+import { compose } from 'ramda'
 
 const leadingSlashes = /^\/+/
 

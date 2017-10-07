@@ -1,10 +1,10 @@
 /* eslint-env mocha */
 
 import { expect } from 'chai'
-import { compose } from '../src/extractable-modules/functional'
+import { compose } from 'ramda'
 
 describe('compose', () => {
-  it('should compose functions in correct order', () => {
+  it('should compose functions in expected order', () => {
     const expected = 'ABHELLO--THERE--ASDAD--3'
 
     const actual = compose(

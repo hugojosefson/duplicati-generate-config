@@ -1,5 +1,5 @@
 import { URL } from 'url'
-import { compose } from '../extractable-modules/functional'
+import { compose } from 'ramda'
 import {
   prepend,
   removeRegex,

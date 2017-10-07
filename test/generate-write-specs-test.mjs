@@ -22,8 +22,6 @@ const compare = prop => (a, b) => {
 
 const parseJson = prop => obj => ({...obj, [prop]: JSON.parse(obj[prop])})
 
-const pluck = prop => obj => obj[prop]
-
 const expecteds = expectedWriteSpecs
   .map(parseJson('contents'))
   .sort(compare('filename'))
@@ -69,7 +67,7 @@ describe('generateWriteSpecs', () => {
     })
 
     it('filenames are in order', () => {
-      expect(actuals.map(pluck('filename'))).to.deep.equal(expecteds.map(pluck('filename')))
+      expect(actuals.map(R.pluck('filename'))).to.deep.equal(expecteds.map(R.pluck('filename')))
     })
 
     expectedWriteSpecs.forEach((_, index) => {
