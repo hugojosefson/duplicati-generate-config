@@ -34,6 +34,13 @@ duplicati-generate-config template-duplicati-config.json definitions.txt
 
 Will read from `definitions.txt`, outputting config files to current directory, using `template-duplicati-config.json` as template.
 
+See also:
+
+```bash
+duplicati-generate-config --help             # shows available commands, currently only 'generate'
+duplicati-generate-config generate --help    # shows available options for the 'generate' command
+```
+
 ### Template file format
 
 Export an existing configuration from duplicati, and use that file.

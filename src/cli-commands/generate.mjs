@@ -1,5 +1,5 @@
-const TEMPLATE = 'template.json'
-const DEFINITIONS = 'definitions.txt'
+const TEMPLATE = 'template-file'
+const DEFINITIONS = 'definitions-file'
 const OUTPUT_DIR = 'output-dir'
 const DRY_RUN = 'dry-run'
 
@@ -7,7 +7,7 @@ export default ({readFile, writeFile, generateWriteSpecs}) => ({
 
   command: [`generate <${TEMPLATE}> <${DEFINITIONS}> [${OUTPUT_DIR}]`, '*'],
 
-  desc: 'Generates duplicati config files',
+  description: 'Generates duplicati config files.',
 
   builder: argv => argv
     .option('o', {
@@ -18,7 +18,7 @@ export default ({readFile, writeFile, generateWriteSpecs}) => ({
     })
     .option('n', {
       alias: DRY_RUN,
-      description: 'Doesn\'t actually write any files',
+      description: 'Doesn\'t actually write any files.',
       type: 'boolean'
     }),
 

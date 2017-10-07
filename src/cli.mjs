@@ -6,7 +6,6 @@ const yargsChain = yargs
   .command(generate({ readFile, writeFile, generateWriteSpecs }))
   .demandCommand()
   .help()
-  .wrap(100)
 
 /* Runs yargs, strange as it may look: */
 // noinspection BadExpressionStatementJS
