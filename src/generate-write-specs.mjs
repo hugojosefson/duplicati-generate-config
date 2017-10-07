@@ -4,7 +4,8 @@ import configToWriteSpec from './transform/config-to-write-spec'
 export default ({
                   template: templateFileContentsPromise,
                   definitions: definitionsFlatfileContentsPromise,
-                  outputDir = '.'
+                  outputDir = '.',
+                  sourcePathPrefix = '/source'
                 }) =>
   templateFileContentsPromise
     .then(s => JSON.parse(s))
@@ -16,7 +17,7 @@ export default ({
         .map(lines => lines.filter(line => line.length))
         .filter(lines => lines.length)
         .map(([name, source, ...ignores]) => ({name, source, ignores}))
-        .map(definitionToConfig(template))
+        .map(definitionToConfig({template, sourcePathPrefix}))
       )
     )
     .then(configs => configs.map(configToWriteSpec(outputDir)))

@@ -15,18 +15,25 @@ export default ({readFile, writeFile, generateWriteSpecs}) => ({
       alias: 'dry-run',
       description: 'Don\'t actually write any files.',
       type: 'boolean'
+    })
+    .option('source-path-prefix', {
+      default: '/source',
+      description: 'Prepended to each source path in the definitions, to the resulting config file.',
+      type: 'string'
     }),
 
   handler: ({
               templateFile,
               definitionsFile,
               outputDir,
-              dryRun
+              dryRun,
+              sourcePathPrefix
             }) =>
     generateWriteSpecs({
       template: readFile(templateFile),
       definitions: readFile(definitionsFile),
-      outputDir
+      outputDir,
+      sourcePathPrefix
     })
       .then(writeSpecs => writeSpecs
         .map(({filename, contents}) => dryRun ? Promise.resolve(filename) : writeFile(filename, contents))

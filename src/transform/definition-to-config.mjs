@@ -25,7 +25,7 @@ const targetUrl = (templateTargetUrl, name) => {
   return url.toString()
 }
 
-export default template => ({name, source, ignores}) => ({
+export default ({template, sourcePathPrefix}) => ({name, source, ignores}) => ({
   ...template,
   Backup: {
     ...template.Backup,
@@ -34,7 +34,7 @@ export default template => ({name, source, ignores}) => ({
     DBPath: undefined,
     Metadata: undefined,
     Sources: [
-      `/source${source}`
+      `${sourcePathPrefix}${source}`
     ],
     Filters: ignores.map((ignore, index) => ({
       Order: index,
@@ -43,6 +43,6 @@ export default template => ({name, source, ignores}) => ({
     }))
   },
   DisplayNames: {
-    [`/source${source}`]: source
+    [`${sourcePathPrefix}${source}`]: source
   }
 })
