@@ -14,23 +14,12 @@
   "scripts": {
     "start": "bin/duplicati-generate-config.js",
     "test": "run-s lint mocha",
-    "mocha": "nyc mocha",
+    "mocha": "mocha --require @std/esm 'test/**/*-test.{m,}js'",
     "lint": "standard",
     "lint-fix": "standard --fix",
     "prepare": "run-s documentation",
     "documentation": "documentation readme --section=API --shallow --format=md src/api.mjs",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "precommit": "lint-staged"
-  },
-  "nyc": {
-    "require": [
-      "@std/esm"
-    ],
-    "extension": [
-      ".mjs"
-    ],
-    "cache": true,
-    "all": true
   },
   "lint-staged": {
     "*.{mjs,js,jsx}": [
@@ -51,18 +40,15 @@
   },
   "comment-@std/esm.cjs": "Allow destructuring import from common-js modules.",
   "@std/esm": {
-    "esm": "all",
     "cjs": true
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "coveralls": "^3.0.0",
     "documentation": "^5.3.2",
     "husky": "^0.14.3",
     "lint-staged": "^4.2.3",
-    "mocha": "<4",
+    "mocha": "^4.0.1",
     "npm-run-all": "^4.1.1",
-    "nyc": "^11.2.1",
     "ramda": "^0.24.1",
     "standard": "^10.0.3"
   },
