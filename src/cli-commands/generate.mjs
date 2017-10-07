@@ -21,7 +21,13 @@ export default ({readFile, writeFile, generateWriteSpecs}) => ({
     const definitionsFilename = argv[DEFINITIONS]
     const outputDir = argv[OUTPUT_DIR]
 
-    generateWriteSpecs(readFile(templateFilename), readFile(definitionsFilename), outputDir)
+    generateWriteSpecs(
+      {
+        template: readFile(templateFilename),
+        definitions: readFile(definitionsFilename),
+        outputDir
+      }
+    )
       .then(writeSpecs => writeSpecs
         .map(({filename, contents}) => writeFile(filename, contents))
         .map(writePromise => writePromise

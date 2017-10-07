@@ -95,15 +95,14 @@ definitions of what to write to disk.
 
 **Parameters**
 
--   `templateFileContents` **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>** Promise of the contents of the duplicati
-    template config file.
--   `definitionsFlatfileContents` **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>** Promise of the contents of the backup
-    definitions flat file.
--   `outputDir` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Where to say in the returned writeDefinition to write the files.
+-   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+    -   `options.template` **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>** Promise of the contents of the duplicati template config file.
+    -   `options.definitions` **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>** Promise of the contents of the backup definitions flat file.
+    -   `options.outputDir` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Where to say in the returned writeDefinition to write the files. (optional, default `"."`)
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;\[{filename, contents}]>** A Promise definitions of what to write to disk
 
-#### writeFile
+#### readFile
 
 Reads a file.
 
@@ -123,3 +122,9 @@ Writes to a file.
 -   `contents` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** String to write.
 
 Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>** A Promise of the filename written.
+
+### Example API usage
+
+Implementation of the `generate` CLI command, shows how the above API is used:
+
+[src/cli-commands/generate.mjs](src/cli-commands/generate.mjs#L24)

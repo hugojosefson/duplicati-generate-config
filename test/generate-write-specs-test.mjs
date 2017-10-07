@@ -27,10 +27,10 @@ const expecteds = expectedWriteSpecs
   .map(parseJson('contents'))
   .sort(compare('filename'))
 
-const produceActuals = () => generateWriteSpecs(
-  Promise.resolve(JSON.stringify(templateConfig)),
-  Promise.resolve(definitions)
-)
+const produceActuals = () => generateWriteSpecs({
+  template: Promise.resolve(JSON.stringify(templateConfig)),
+  definitions: Promise.resolve(definitions)
+})
   .then(actualWriteSpecs => actualWriteSpecs
     .map(parseJson('contents'))
     .sort(compare('filename'))
