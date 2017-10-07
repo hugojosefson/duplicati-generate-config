@@ -6,7 +6,8 @@ import { generateWriteSpecs } from '../src/api'
 
 import {
   expectToStartWith,
-  expectToNotStartWith
+  expectToNotStartWith,
+  expectToEndWith
 } from './expectation-utils'
 import templateConfig from './fixtures/template-config'
 import definitions from './fixtures/backup-definitions'
@@ -49,7 +50,7 @@ const expectAtPath = ({
   produceActuals(options)
     .then(actuals => actuals
       .map(R.path(typeof path === 'string' ? path.split('.') : path))
-      .map(value => splitArrays ? (value.length ? value.map(item => Promise.resolve(item)) : value) : value)
+      .map(value => splitArrays ? (Array.isArray(value) ? value.map(item => Promise.resolve(item)) : [Promise.resolve(value)]) : [Promise.resolve(value)])
       .map(valuePromises => valuePromises.map(valuePromise => valuePromise.then(expector)))
     )
     .then(promises => Promise.all(promises))
@@ -115,6 +116,55 @@ describe('generateWriteSpecs', () => {
         path: 'contents.Backup.Sources',
         splitArrays: true,
         expector: source => expectToStartWith(source, 'Another String')
+      })
+    )
+  })
+
+  describe('namePrefix', () => {
+    it('is prepended to Backup.Name', () =>
+      expectAtPath({
+        options: {
+          namePrefix: 'myPrefix'
+        },
+        path: 'contents.Backup.Name',
+        expector: name => expectToStartWith(name, 'myPrefix')
+      })
+    )
+    it('is applied as-is, without cleaning up', () =>
+      expectAtPath({
+        options: {
+          namePrefix: 'Another String/. '
+        },
+        path: 'contents.Backup.Name',
+        splitArrays: true,
+        expector: name => expectToStartWith(name, 'Another String/. ')
+      })
+    )
+  })
+
+  describe('nameSuffix', () => {
+    it('has default value " to b2 backblaze"', () =>
+      expectAtPath({
+        path: 'contents.Backup.Name',
+        expector: name => expectToEndWith(name, ' to b2 backblaze')
+      })
+    )
+    it('is appended to Backup.Name', () =>
+      expectAtPath({
+        options: {
+          nameSuffix: 'mySuffix'
+        },
+        path: 'contents.Backup.Name',
+        expector: name => expectToEndWith(name, 'mySuffix')
+      })
+    )
+    it('is applied as-is, without cleaning up', () =>
+      expectAtPath({
+        options: {
+          nameSuffix: 'Another String/. '
+        },
+        path: 'contents.Backup.Name',
+        expector: name => expectToEndWith(name, 'Another String/. ')
       })
     )
   })
