@@ -1,40 +1,33 @@
-const TEMPLATE = 'template-file'
-const DEFINITIONS = 'definitions-file'
-const OUTPUT_DIR = 'output-dir'
-const DRY_RUN = 'dry-run'
-
 export default ({readFile, writeFile, generateWriteSpecs}) => ({
 
-  command: [`generate <${TEMPLATE}> <${DEFINITIONS}> [${OUTPUT_DIR}]`, '*'],
+  command: [`generate <template-file> <definitions-file> [output-dir]`, '*'],
 
   description: 'Generates duplicati config files.',
 
   builder: argv => argv
     .option('o', {
-      alias: OUTPUT_DIR,
+      alias: 'output-dir',
       default: '.',
       description: 'Where to write the generated config files.',
       type: 'string'
     })
     .option('n', {
-      alias: DRY_RUN,
-      description: 'Doesn\'t actually write any files.',
+      alias: 'dry-run',
+      description: 'Don\'t actually write any files.',
       type: 'boolean'
     }),
 
-  handler: argv => {
-    const templateFilename = argv[TEMPLATE]
-    const definitionsFilename = argv[DEFINITIONS]
-    const outputDir = argv[OUTPUT_DIR]
-    const dryRun = argv[DRY_RUN]
-
-    generateWriteSpecs(
-      {
-        template: readFile(templateFilename),
-        definitions: readFile(definitionsFilename),
-        outputDir
-      }
-    )
+  handler: ({
+              templateFile,
+              definitionsFile,
+              outputDir,
+              dryRun
+            }) =>
+    generateWriteSpecs({
+      template: readFile(templateFile),
+      definitions: readFile(definitionsFile),
+      outputDir
+    })
       .then(writeSpecs => writeSpecs
         .map(({filename, contents}) => dryRun ? Promise.resolve(filename) : writeFile(filename, contents))
         .map(writePromise => writePromise
@@ -46,6 +39,4 @@ export default ({readFile, writeFile, generateWriteSpecs}) => ({
         console.error('Caught error:', err.stack)
         process.exit(1)
       })
-  }
-
 })
