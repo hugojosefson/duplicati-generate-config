@@ -5,7 +5,8 @@ export default ({
                   template: templateFileContentsPromise,
                   definitions: definitionsFlatfileContentsPromise,
                   outputDir = '.',
-                  sourcePathPrefix = '/source'
+                  sourcePathPrefix = '/source',
+                  outputFilenameSuffix = '-duplicati-config.json'
                 }) =>
   templateFileContentsPromise
     .then(s => JSON.parse(s))
@@ -20,4 +21,4 @@ export default ({
         .map(definitionToConfig({template, sourcePathPrefix}))
       )
     )
-    .then(configs => configs.map(configToWriteSpec(outputDir)))
+    .then(configs => configs.map(configToWriteSpec({outputDir, outputFilenameSuffix})))
