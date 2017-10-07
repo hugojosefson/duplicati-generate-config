@@ -1,6 +1,7 @@
 const TEMPLATE = 'template.json'
 const DEFINITIONS = 'definitions.txt'
 const OUTPUT_DIR = 'output-dir'
+const DRY_RUN = 'dry-run'
 
 export default ({readFile, writeFile, generateWriteSpecs}) => ({
 
@@ -10,16 +11,22 @@ export default ({readFile, writeFile, generateWriteSpecs}) => ({
 
   builder: argv => argv
     .option('o', {
-      alias: 'output-dir',
+      alias: OUTPUT_DIR,
       default: '.',
       description: 'Where to write the generated config files.',
       type: 'string'
+    })
+    .option('n', {
+      alias: DRY_RUN,
+      description: 'Doesn\'t actually write any files',
+      type: 'boolean'
     }),
 
   handler: argv => {
     const templateFilename = argv[TEMPLATE]
     const definitionsFilename = argv[DEFINITIONS]
     const outputDir = argv[OUTPUT_DIR]
+    const dryRun = argv[DRY_RUN]
 
     generateWriteSpecs(
       {
@@ -29,9 +36,9 @@ export default ({readFile, writeFile, generateWriteSpecs}) => ({
       }
     )
       .then(writeSpecs => writeSpecs
-        .map(({filename, contents}) => writeFile(filename, contents))
+        .map(({filename, contents}) => dryRun ? Promise.resolve(filename) : writeFile(filename, contents))
         .map(writePromise => writePromise
-          .then(writtenFilename => console.log(`Written: ${writtenFilename}`))
+          .then(writtenFilename => console.log(`${dryRun ? 'NOT ' : ''}Written: ${writtenFilename}`))
         )
       )
       .then(() => console.log('Done.'))
