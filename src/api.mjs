@@ -11,6 +11,7 @@
  * @param {String} [options.sourcePathPrefix="/source"] - Prepended to each source path in the definitions, to the resulting config file.
  * @param {String} [options.outputFilenamePrefix=""] - Prepended to each written config filename.
  * @param {String} [options.outputFilenameSuffix="-duplicati-config.json"] - Appended to each written config filename.
+ * @param {[]
  * @returns {Promise.<[{filename, contents}]>} A Promise definitions of what to write to disk
  * @name generateWriteSpecs
  */

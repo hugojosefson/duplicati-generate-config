@@ -25,7 +25,7 @@ export default ({
                   template,
                   sourcePathPrefix = '/source',
                   namePrefix = '',
-                  nameSuffix = ' to b2 backblaze'
+                  nameSuffix = ''
                 }) =>
   ({name, source, ignores}) =>
     ({

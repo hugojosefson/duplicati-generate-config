@@ -22,7 +22,7 @@ export default ({readFile, writeFile, generateWriteSpecs}) => ({
       type: 'string'
     })
     .option('name-suffix', {
-      default: ' to b2 backblaze',
+      default: '',
       description: 'Appended to each backup set name the definitions, to the resulting config file',
       type: 'string'
     })
