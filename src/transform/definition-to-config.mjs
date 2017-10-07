@@ -2,7 +2,6 @@ import { URL } from 'url'
 import { compose } from 'ramda'
 import {
   prepend,
-  removeRegex,
   removeAnyLeadingSlash,
   cleanHostname,
   filterExpression
@@ -14,8 +13,7 @@ const targetUrl = (templateTargetUrl, name) => {
   url.hostname = compose(
     prepend('duplicati-'),
     removeAnyLeadingSlash,
-    cleanHostname,
-    removeRegex(/ to b2.*$/)
+    cleanHostname
   )(name)
 
   url.pathname = '/'
@@ -23,24 +21,30 @@ const targetUrl = (templateTargetUrl, name) => {
   return url.toString()
 }
 
-export default ({template, sourcePathPrefix = '/source'}) => ({name, source, ignores}) => ({
-  ...template,
-  Backup: {
-    ...template.Backup,
-    Name: name,
-    TargetURL: targetUrl(template.Backup.TargetURL, name),
-    DBPath: undefined,
-    Metadata: undefined,
-    Sources: [
-      `${sourcePathPrefix}${source}`
-    ],
-    Filters: ignores.map((ignore, index) => ({
-      Order: index,
-      Include: false,
-      Expression: filterExpression(sourcePathPrefix)(ignore)
-    }))
-  },
-  DisplayNames: {
-    [`${sourcePathPrefix}${source}`]: source
-  }
-})
+export default ({
+                  template,
+                  sourcePathPrefix = '/source',
+                  nameSuffix = ' to b2 backblaze'
+                }) =>
+  ({name, source, ignores}) =>
+    ({
+      ...template,
+      Backup: {
+        ...template.Backup,
+        Name: `${name}${nameSuffix}`,
+        TargetURL: targetUrl(template.Backup.TargetURL, name),
+        DBPath: undefined,
+        Metadata: undefined,
+        Sources: [
+          `${sourcePathPrefix}${source}`
+        ],
+        Filters: ignores.map((ignore, index) => ({
+          Order: index,
+          Include: false,
+          Expression: filterExpression(sourcePathPrefix)(ignore)
+        }))
+      },
+      DisplayNames: {
+        [`${sourcePathPrefix}${source}`]: source
+      }
+    })

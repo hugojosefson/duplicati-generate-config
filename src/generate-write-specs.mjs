@@ -5,6 +5,7 @@ export default ({
                   template: templateFileContentsPromise,
                   definitions: definitionsFlatfileContentsPromise,
                   outputDir,
+                  nameSuffix,
                   sourcePathPrefix,
                   outputFilenamePrefix,
                   outputFilenameSuffix
@@ -19,7 +20,7 @@ export default ({
         .map(lines => lines.filter(line => line.length))
         .filter(lines => lines.length)
         .map(([name, source, ...ignores]) => ({name, source, ignores}))
-        .map(definitionToConfig({template, sourcePathPrefix}))
+        .map(definitionToConfig({template, sourcePathPrefix, nameSuffix}))
       )
     )
     .then(

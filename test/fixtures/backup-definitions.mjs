@@ -3,27 +3,27 @@ export default `# 1st line of every block is name of backup set.
 # Following lines are exclusions.
 # Empty line denotes end of block, and that backup set.
 
-virtual-machines/Keep to b2 backblaze
+virtual-machines/Keep
 /home/me/virtual-machines/Keep
 
-Videos/Programming to b2 backblaze
+Videos/Programming
 /home/me/Videos/Programming
 
-Important Downloads to b2 backblaze
+Important Downloads
 /home/me/Important Downloads
 
-code/old-stuff to b2 backblaze
+code/old-stuff
 /home/me/code/old-stuff
 */node_modules/
 */target/
 
-code to b2 backblaze
+code
 /home/me/code
 /home/me/code/old-stuff/
 */node_modules/
 */target/
 
-/home/me to b2 backblaze
+/home/me
 /home/me
 /home/me/code/
 /home/me/virtual-machines/
