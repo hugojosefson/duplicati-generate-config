@@ -139,4 +139,4 @@ Returns **[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 Implementation of the `generate` CLI command, shows how the above API is used:
 
-[src/cli-commands/generate.mjs](src/cli-commands/generate.mjs#L24)
+[src/cli-commands/generate.mjs](src/cli-commands/generate.mjs#L56)
