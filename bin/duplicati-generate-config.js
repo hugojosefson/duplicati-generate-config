@@ -1,4 +1,5 @@
 #!/usr/bin/env node
 
 require('engine-check')()
-require('@std/esm')(module)('../src/cli')
+require('babel-register')(require('../package.json').babel)
+require('../src/cli')

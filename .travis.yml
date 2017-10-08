@@ -8,3 +8,6 @@ node_js:
 
 cache:
   yarn: true
+
+after_script:
+  - "yarn coveralls"
