@@ -3,6 +3,7 @@
 _Generate [duplicati](https://www.duplicati.com/) backup configs from a flat file._
 
 [![Build Status](https://travis-ci.org/hugojosefson/duplicati-generate-config.svg?branch=master)](https://travis-ci.org/hugojosefson/duplicati-generate-config)
+[![Coverage Status](https://coveralls.io/repos/github/hugojosefson/duplicati-generate-config/badge.svg?branch=master)](https://coveralls.io/github/hugojosefson/duplicati-generate-config?branch=master)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 Currently hard-coded for:
