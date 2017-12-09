@@ -1,5 +1,7 @@
 # duplicati-generate-config
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/hugojosefson/duplicati-generate-config.svg)](https://greenkeeper.io/)
+
 _Generate [duplicati](https://www.duplicati.com/) backup configs from a flat file._
 
 [![Build Status](https://travis-ci.org/hugojosefson/duplicati-generate-config.svg?branch=master)](https://travis-ci.org/hugojosefson/duplicati-generate-config)
