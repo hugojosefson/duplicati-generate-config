@@ -19,6 +19,7 @@
     "lint-fix": "standard --fix",
     "prepare": "run-s documentation",
     "documentation": "documentation readme --section=API --shallow --format=md src/api.js",
+    "npm-audit": "npm install --package-lock-only && npm audit; rm package-lock.json",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "nyc": {
