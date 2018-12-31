@@ -21,16 +21,12 @@ Recommended to install latest via [nvm](https://github.com/creationix/nvm#readme
 nvm install stable
 ```
 
-## Installation
-
-```bash
-npm install -g hugojosefson/duplicati-generate-config
-```
-
 ## Usage
 
+Just have the requisite Node.js installed, then:
+
 ```bash
-duplicati-generate-config template-duplicati-config.json definitions.txt
+npx duplicati-generate-config template-duplicati-config.json definitions.txt
 ```
 
 Will read from `definitions.txt`, outputting config files to current directory, using `template-duplicati-config.json` as template.
