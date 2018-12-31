@@ -1,4 +1,4 @@
-# duplicati-generate-config
+# @hugojosefson/duplicati-generate-config
 
 _Generate [duplicati](https://www.duplicati.com/) backup configs from a flat file._
 
@@ -26,7 +26,7 @@ nvm install stable
 Just have the requisite Node.js installed, then:
 
 ```bash
-npx duplicati-generate-config template-duplicati-config.json definitions.txt
+npx @hugojosefson/duplicati-generate-config template-duplicati-config.json definitions.txt
 ```
 
 Will read from `definitions.txt`, outputting config files to current directory, using `template-duplicati-config.json` as template.
@@ -34,8 +34,8 @@ Will read from `definitions.txt`, outputting config files to current directory, 
 See also:
 
 ```bash
-duplicati-generate-config --help             # shows available commands, currently only 'generate'
-duplicati-generate-config generate --help    # shows available options for the 'generate' command
+npx @hugojosefson/duplicati-generate-config --help             # shows available commands, currently only 'generate'
+npx @hugojosefson/duplicati-generate-config generate --help    # shows available options for the 'generate' command
 ```
 
 ### Template file format
