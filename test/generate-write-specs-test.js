@@ -25,7 +25,7 @@ const compare = prop => (a, b) => {
   return 0
 }
 
-const parseJson = prop => obj => ({...obj, [prop]: JSON.parse(obj[prop])})
+const parseJson = prop => obj => ({ ...obj, [prop]: JSON.parse(obj[prop]) })
 
 const expecteds = expectedWriteSpecs
   .map(parseJson('contents'))
@@ -42,11 +42,11 @@ const produceActuals = options => generateWriteSpecs({
   )
 
 const expectAtPath = ({
-                        options,
-                        path = '',
-                        expector = () => expect(true).to.equal(false),
-                        splitArrays  // array value will be split up into several calls
-                      }) =>
+  options,
+  path = '',
+  expector = () => expect(true).to.equal(false),
+  splitArrays // array value will be split up into several calls
+}) =>
   produceActuals(options)
     .then(actuals => actuals
       .map(R.path(typeof path === 'string' ? path.split('.') : path))

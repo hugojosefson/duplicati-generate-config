@@ -2,15 +2,15 @@ import definitionToConfig from './transform/definition-to-config'
 import configToWriteSpec from './transform/config-to-write-spec'
 
 export default ({
-                  template: templateFileContentsPromise,
-                  definitions: definitionsFlatfileContentsPromise,
-                  outputDir,
-                  namePrefix,
-                  nameSuffix,
-                  sourcePathPrefix,
-                  outputFilenamePrefix,
-                  outputFilenameSuffix
-                }) =>
+  template: templateFileContentsPromise,
+  definitions: definitionsFlatfileContentsPromise,
+  outputDir,
+  namePrefix,
+  nameSuffix,
+  sourcePathPrefix,
+  outputFilenamePrefix,
+  outputFilenameSuffix
+}) =>
   templateFileContentsPromise
     .then(s => JSON.parse(s))
     .then(template => definitionsFlatfileContentsPromise
@@ -20,8 +20,8 @@ export default ({
         .map(lines => lines.filter(line => line[0] !== '#'))
         .map(lines => lines.filter(line => line.length))
         .filter(lines => lines.length)
-        .map(([name, source, ...ignores]) => ({name, source, ignores}))
-        .map(definitionToConfig({template, sourcePathPrefix, namePrefix, nameSuffix}))
+        .map(([name, source, ...ignores]) => ({ name, source, ignores }))
+        .map(definitionToConfig({ template, sourcePathPrefix, namePrefix, nameSuffix }))
       )
     )
     .then(

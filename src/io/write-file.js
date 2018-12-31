@@ -1,5 +1,5 @@
 import { writeFile } from 'fs'
-const {promisify} = require('util')
+const { promisify } = require('util')
 
 const writeFileAsPromise = promisify(writeFile)
 

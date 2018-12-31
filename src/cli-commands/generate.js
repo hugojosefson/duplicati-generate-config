@@ -1,4 +1,4 @@
-export default ({readFile, writeFile, generateWriteSpecs}) => ({
+export default ({ readFile, writeFile, generateWriteSpecs }) => ({
 
   command: [`generate <template-file> <definitions-file> [output-dir]`, '*'],
 
@@ -43,16 +43,16 @@ export default ({readFile, writeFile, generateWriteSpecs}) => ({
     }),
 
   handler: ({
-              templateFile,
-              definitionsFile,
-              outputDir,
-              dryRun,
-              namePrefix,
-              nameSuffix,
-              sourcePathPrefix,
-              outputFilenamePrefix,
-              outputFilenameSuffix
-            }) =>
+    templateFile,
+    definitionsFile,
+    outputDir,
+    dryRun,
+    namePrefix,
+    nameSuffix,
+    sourcePathPrefix,
+    outputFilenamePrefix,
+    outputFilenameSuffix
+  }) =>
     generateWriteSpecs({
       template: readFile(templateFile),
       definitions: readFile(definitionsFile),
@@ -64,7 +64,7 @@ export default ({readFile, writeFile, generateWriteSpecs}) => ({
       outputFilenameSuffix
     })
       .then(writeSpecs => writeSpecs
-        .map(({filename, contents}) => dryRun ? Promise.resolve(filename) : writeFile(filename, contents))
+        .map(({ filename, contents }) => dryRun ? Promise.resolve(filename) : writeFile(filename, contents))
         .map(writePromise => writePromise
           .then(writtenFilename => console.log(`${dryRun ? 'NOT ' : ''}Written: ${writtenFilename}`))
         )

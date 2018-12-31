@@ -22,12 +22,12 @@ const targetUrl = (templateTargetUrl, name) => {
 }
 
 export default ({
-                  template,
-                  sourcePathPrefix = '/source',
-                  namePrefix = '',
-                  nameSuffix = ' to b2 backblaze'
-                }) =>
-  ({name, source, ignores}) =>
+  template,
+  sourcePathPrefix = '/source',
+  namePrefix = '',
+  nameSuffix = ' to b2 backblaze'
+}) =>
+  ({ name, source, ignores }) =>
     ({
       ...template,
       Backup: {
