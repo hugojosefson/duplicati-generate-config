@@ -5,6 +5,8 @@ sudo: false
 node_js:
   - "8"
   - "8.10.0"
+  - "lts"
+  - "stable"
 
 cache:
   yarn: true
