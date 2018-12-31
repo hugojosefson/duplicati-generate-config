@@ -43,7 +43,7 @@
   "author": "Hugo Josefson <hugo@josefson.org> (https://www.hugojosefson.com/)",
   "license": "ISC",
   "engines": {
-    "node": ">=8.3.0"
+    "node": ">=8.10.0"
   },
   "babel": {
     "presets": [

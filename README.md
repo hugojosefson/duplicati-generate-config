@@ -13,7 +13,7 @@ Currently hard-coded for:
 
 ## Prerequisite
 
-Node.js, at least `v8.3.0`.
+Node.js, at least `v8.10.0`.
 
 Recommended to install latest via [nvm](https://github.com/creationix/nvm#readme):
 
