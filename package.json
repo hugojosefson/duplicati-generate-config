@@ -1,5 +1,5 @@
 {
-  "name": "duplicati-generate-config",
+  "name": "@hugojosefson/duplicati-generate-config",
   "version": "1.0.0",
   "description": "Generate duplicati backup configs from a flat file",
   "main": "src/api-commonjs.js",
@@ -42,7 +42,6 @@
   ],
   "author": "Hugo Josefson <hugo@josefson.org> (https://www.hugojosefson.com/)",
   "license": "ISC",
-  "comment-engines.node": "Not using babel, code seems to work from v8.3.0 and up.",
   "engines": {
     "node": ">=8.3.0"
   },
