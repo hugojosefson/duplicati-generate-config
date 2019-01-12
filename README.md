@@ -26,7 +26,8 @@ nvm install stable
 Just have the requisite Node.js installed, then:
 
 ```bash
-npx @hugojosefson/duplicati-generate-config template-duplicati-config.json definitions.txt
+npx -p @hugojosefson/duplicati-generate-config bin/duplicati-generate-config.js \
+  template-duplicati-config.json definitions.txt
 ```
 
 Will read from `definitions.txt`, outputting config files to current directory, using `template-duplicati-config.json` as template.
@@ -34,8 +35,8 @@ Will read from `definitions.txt`, outputting config files to current directory, 
 See also:
 
 ```bash
-npx @hugojosefson/duplicati-generate-config --help             # shows available commands, currently only 'generate'
-npx @hugojosefson/duplicati-generate-config generate --help    # shows available options for the 'generate' command
+npx -p @hugojosefson/duplicati-generate-config bin/duplicati-generate-config.js --help             # shows available commands, currently only 'generate'
+npx -p @hugojosefson/duplicati-generate-config bin/duplicati-generate-config.js generate --help    # shows available options for the 'generate' command
 ```
 
 ### Template file format
