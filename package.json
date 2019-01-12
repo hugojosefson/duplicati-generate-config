@@ -3,9 +3,10 @@
   "version": "1.0.2",
   "description": "Generate duplicati backup configs from a flat file",
   "main": "src/api-commonjs.js",
-  "module": "src/api.js",
+  "module": "src/api.mjs",
   "files": [
     "bin",
+    "index.js",
     "src"
   ],
   "bin": {
@@ -24,7 +25,7 @@
   },
   "nyc": {
     "require": [
-      "babel-register"
+      "@babel/register"
     ],
     "cache": true,
     "all": true
@@ -48,17 +49,12 @@
   "babel": {
     "presets": [
       [
-        "env",
+        "@babel/preset-env",
         {
           "targets": {
             "node": "current"
           }
         }
-      ]
-    ],
-    "plugins": [
-      [
-        "transform-object-rest-spread"
       ]
     ]
   },
@@ -74,10 +70,9 @@
     "standard": "^12.0.1"
   },
   "dependencies": {
-    "babel-core": "^6.26.3",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-register": "^6.26.0",
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
     "engine-check": "^1.0.1",
     "ramda": "^0.26.1",
     "term-size": "^1.2.0",
