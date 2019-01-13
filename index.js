@@ -1,3 +1,3 @@
 require('engine-check')()
-require('@babel/register')
-require('./src/cli')
+require = require('esm')(module) // eslint-disable-line no-global-assign
+module.exports = require('./src/cli')
