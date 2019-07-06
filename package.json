@@ -14,7 +14,7 @@
   "scripts": {
     "start": "bin/duplicati-generate-config",
     "test": "run-s lint mocha",
-    "mocha": "nyc mocha --require @babel/register",
+    "mocha": "NODE_ENV=test nyc mocha --require @babel/register",
     "lint": "standard",
     "lint-fix": "standard --fix",
     "prepare": "run-s documentation",
@@ -29,19 +29,23 @@
     "instrument": false
   },
   "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ],
-    "plugins": [
-      [
-        "istanbul",
-        {
-          "exclude": [
-            "**/*.spec.js"
+    "env": {
+      "test": {
+        "presets": [
+          "@babel/preset-env"
+        ],
+        "plugins": [
+          [
+            "istanbul",
+            {
+              "exclude": [
+                "**/*.spec.js"
+              ]
+            }
           ]
-        }
-      ]
-    ]
+        ]
+      }
+    }
   },
   "lint-staged": {
     "*.{mjs,js,jsx}": [
