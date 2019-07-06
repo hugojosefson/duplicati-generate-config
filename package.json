@@ -14,7 +14,7 @@
   "scripts": {
     "start": "bin/duplicati-generate-config",
     "test": "run-s lint mocha",
-    "mocha": "mjs-mocha --es-module-specifier-resolution=node",
+    "mocha": "nyc mocha --require @babel/register",
     "lint": "standard",
     "lint-fix": "standard --fix",
     "prepare": "run-s documentation",
@@ -24,7 +24,24 @@
   },
   "nyc": {
     "cache": true,
-    "all": true
+    "all": true,
+    "sourceMap": false,
+    "instrument": false
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      [
+        "istanbul",
+        {
+          "exclude": [
+            "**/*.spec.js"
+          ]
+        }
+      ]
+    ]
   },
   "lint-staged": {
     "*.{mjs,js,jsx}": [
@@ -44,6 +61,10 @@
     "node": ">=12.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
+    "@babel/register": "^7.4.4",
+    "babel-plugin-istanbul": "^5.1.4",
     "chai": "^4.2.0",
     "coveralls": "^3.0.4",
     "documentation": "^11.0.1",
