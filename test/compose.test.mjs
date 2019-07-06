@@ -1,7 +1,9 @@
 /* eslint-env mocha */
 
-import { expect } from 'chai'
+import chai from 'chai'
 import { compose } from 'ramda'
+
+const {expect} = chai
 
 describe('compose', () => {
   it('should compose functions in expected order', () => {

@@ -1,10 +1,10 @@
 import { URL } from 'url'
 import { compose } from 'ramda'
 import {
-  prepend,
-  removeAnyLeadingSlash,
   cleanHostname,
-  filterExpression
+  filterExpression,
+  prepend,
+  removeAnyLeadingSlash
 } from '../extractable-modules/string-manipulation'
 
 const targetUrl = (templateTargetUrl, name) => {

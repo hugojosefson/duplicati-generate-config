@@ -1,13 +1,14 @@
 /* eslint-env mocha */
 
-import { expect } from 'chai'
-
+import chai from 'chai'
 import {
   cleanFilename,
   cleanHostname,
-  replaceRegex,
-  filterExpression
+  filterExpression,
+  replaceRegex
 } from '../src/extractable-modules/string-manipulation'
+
+const {expect} = chai
 
 describe('string-manipulation', () => {
   describe('replaceRegex', () => {

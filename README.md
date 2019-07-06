@@ -13,7 +13,7 @@ Currently hard-coded for:
 
 ## Prerequisite
 
-Node.js, at least `v8.10.0`.
+Node.js, at least `v12.0.0`.
 
 Recommended to install latest via [nvm](https://github.com/creationix/nvm#readme):
 
@@ -86,7 +86,7 @@ Example `definitions.txt`:
 
 ## Programmatic access
 
-You can also `import` or `require` the module, and use its exported functions programmatically.
+You can also `import` the module, and use its exported functions programmatically.
 
 ### API
 

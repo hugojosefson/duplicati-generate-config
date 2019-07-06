@@ -1,5 +1,6 @@
 /node_modules/
-/.idea/
 /*.log
+/*.tgz
 .*.swp
+/.idea/
 /.nyc_output/

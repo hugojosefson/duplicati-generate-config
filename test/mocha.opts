@@ -1,3 +1,0 @@
---require esm
---recursive
-test/**/*-test.{mjs,js,jsx}

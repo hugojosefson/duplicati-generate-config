@@ -1,17 +1,14 @@
 /* eslint-env mocha */
 
-import { expect } from 'chai'
-import R from 'ramda'
+import chai from 'chai'
+import { path as Rpath, pluck as Rpluck } from 'ramda'
 import { generateWriteSpecs } from '../src/api'
-
-import {
-  expectToStartWith,
-  expectToNotStartWith,
-  expectToEndWith
-} from './expectation-utils'
+import { expectToEndWith, expectToNotStartWith, expectToStartWith } from './expectation-utils'
 import templateConfig from './fixtures/template-config'
 import definitions from './fixtures/backup-definitions'
 import expectedWriteSpecs from './fixtures/expected-write-specs'
+
+const {expect} = chai
 
 const compare = prop => (a, b) => {
   if (a[prop] < b[prop]) {
@@ -25,7 +22,7 @@ const compare = prop => (a, b) => {
   return 0
 }
 
-const parseJson = prop => obj => ({ ...obj, [prop]: JSON.parse(obj[prop]) })
+const parseJson = prop => obj => ({...obj, [prop]: JSON.parse(obj[prop])})
 
 const expecteds = expectedWriteSpecs
   .map(parseJson('contents'))
@@ -42,14 +39,14 @@ const produceActuals = options => generateWriteSpecs({
   )
 
 const expectAtPath = ({
-  options,
-  path = '',
-  expector = () => expect(true).to.equal(false),
-  splitArrays // array value will be split up into several calls
-}) =>
+                        options,
+                        path = '',
+                        expector = () => expect(true).to.equal(false),
+                        splitArrays // array value will be split up into several calls
+                      }) =>
   produceActuals(options)
     .then(actuals => actuals
-      .map(R.path(typeof path === 'string' ? path.split('.') : path))
+      .map(Rpath(typeof path === 'string' ? path.split('.') : path))
       .map(value => splitArrays ? (Array.isArray(value) ? value.map(item => Promise.resolve(item)) : [Promise.resolve(value)]) : [Promise.resolve(value)])
       .map(valuePromises => valuePromises.map(valuePromise => valuePromise.then(expector)))
     )
@@ -68,7 +65,7 @@ describe('generateWriteSpecs', () => {
     })
 
     it('filenames are in order', () => {
-      expect(actuals.map(R.pluck('filename'))).to.deep.equal(expecteds.map(R.pluck('filename')))
+      expect(actuals.map(Rpluck('filename'))).to.deep.equal(expecteds.map(Rpluck('filename')))
     })
 
     expectedWriteSpecs.forEach((_, index) => {
