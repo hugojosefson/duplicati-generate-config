@@ -8,7 +8,7 @@ import {
   replaceRegex
 } from '../src/extractable-modules/string-manipulation'
 
-const {expect} = chai
+const { expect } = chai
 
 describe('string-manipulation', () => {
   describe('replaceRegex', () => {

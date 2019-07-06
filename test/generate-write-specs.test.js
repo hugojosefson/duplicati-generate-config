@@ -8,7 +8,7 @@ import templateConfig from './fixtures/template-config'
 import definitions from './fixtures/backup-definitions'
 import expectedWriteSpecs from './fixtures/expected-write-specs'
 
-const {expect} = chai
+const { expect } = chai
 
 const compare = prop => (a, b) => {
   if (a[prop] < b[prop]) {
@@ -22,7 +22,7 @@ const compare = prop => (a, b) => {
   return 0
 }
 
-const parseJson = prop => obj => ({...obj, [prop]: JSON.parse(obj[prop])})
+const parseJson = prop => obj => ({ ...obj, [prop]: JSON.parse(obj[prop]) })
 
 const expecteds = expectedWriteSpecs
   .map(parseJson('contents'))
@@ -39,11 +39,11 @@ const produceActuals = options => generateWriteSpecs({
   )
 
 const expectAtPath = ({
-                        options,
-                        path = '',
-                        expector = () => expect(true).to.equal(false),
-                        splitArrays // array value will be split up into several calls
-                      }) =>
+  options,
+  path = '',
+  expector = () => expect(true).to.equal(false),
+  splitArrays // array value will be split up into several calls
+}) =>
   produceActuals(options)
     .then(actuals => actuals
       .map(Rpath(typeof path === 'string' ? path.split('.') : path))

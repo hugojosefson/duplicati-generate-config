@@ -3,7 +3,7 @@
 import chai from 'chai'
 import { compose } from 'ramda'
 
-const {expect} = chai
+const { expect } = chai
 
 describe('compose', () => {
   it('should compose functions in expected order', () => {
