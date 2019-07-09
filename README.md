@@ -4,7 +4,7 @@ _Generate [duplicati](https://www.duplicati.com/) backup configs from a flat fil
 
 [![Build Status](https://travis-ci.org/hugojosefson/duplicati-generate-config.svg?branch=master)](https://travis-ci.org/hugojosefson/duplicati-generate-config)
 [![Coverage Status](https://coveralls.io/repos/github/hugojosefson/duplicati-generate-config/badge.svg?branch=master)](https://coveralls.io/github/hugojosefson/duplicati-generate-config?branch=master)
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Greenkeeper badge](https://badges.greenkeeper.io/hugojosefson/duplicati-generate-config.svg)](https://greenkeeper.io/)
 
 Currently hard-coded for:
 
