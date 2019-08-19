@@ -83,7 +83,7 @@
   "dependencies": {
     "ramda": "^0.26.1",
     "term-size": "^2.1.0",
-    "yargs": "^13.2.4"
+    "yargs": "^14.0.0"
   },
   "husky": {
     "hooks": {
