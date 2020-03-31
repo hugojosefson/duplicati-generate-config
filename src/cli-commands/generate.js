@@ -1,6 +1,6 @@
 export default ({ readFile, writeFile, generateWriteSpecs }) => ({
 
-  command: [`generate <template-file> <definitions-file> [output-dir]`, '*'],
+  command: ['generate <template-file> <definitions-file> [output-dir]', '*'],
 
   description: 'Generates duplicati config files.',
 
