@@ -155,4 +155,4 @@ Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/
 
 Implementation of the `generate` CLI command, shows how the above API is used:
 
-[src/cli-commands/generate.js](src/cli-commands/generate.js#L56)
+[src/cli-commands/generate.mjs](src/cli-commands/generate.mjs#L56)
