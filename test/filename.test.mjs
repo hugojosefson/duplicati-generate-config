@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 import chai from 'chai'
-import configToWriteSpec from '../src/transform/config-to-write-spec'
+import configToWriteSpec from '../src/transform/config-to-write-spec.mjs'
 
 const { expect } = chai
 

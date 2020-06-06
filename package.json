@@ -2,23 +2,20 @@
   "name": "@hugojosefson/duplicati-generate-config",
   "version": "2.0.5",
   "description": "Generate duplicati backup configs from a flat file",
-  "type": "module",
-  "main": "src/api.js",
+  "main": "src/api.mjs",
   "files": [
-    "bin",
     "src"
   ],
   "bin": {
-    "duplicati-generate-config": "bin/duplicati-generate-config"
+    "duplicati-generate-config": "src/cli.mjs"
   },
   "scripts": {
-    "start": "bin/duplicati-generate-config",
+    "start": "src/cli.mjs",
     "test": "run-s lint mocha",
-    "mocha": "NODE_ENV=test nyc mocha --require @babel/register",
-    "lint": "standard",
-    "lint-fix": "standard --fix",
+    "mocha": "NODE_ENV=test nyc mocha",
+    "lint": "standard --fix",
     "prepare": "run-s documentation",
-    "documentation": "documentation readme --section=API --shallow --format=md src/api.js",
+    "documentation": "documentation readme --section=API --shallow --format=md src/api.mjs",
     "npm-audit": "npm install --package-lock-only && npm audit; rm package-lock.json",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
@@ -28,29 +25,9 @@
     "sourceMap": false,
     "instrument": false
   },
-  "babel": {
-    "env": {
-      "test": {
-        "presets": [
-          "@babel/preset-env"
-        ],
-        "plugins": [
-          [
-            "istanbul",
-            {
-              "exclude": [
-                "**/*.spec.js"
-              ]
-            }
-          ]
-        ]
-      }
-    }
-  },
   "lint-staged": {
     "*.{mjs,js,jsx}": [
-      "standard --fix",
-      "git add"
+      "standard --fix"
     ]
   },
   "repository": "hugojosefson/duplicati-generate-config",
@@ -62,19 +39,14 @@
   "author": "Hugo Josefson <hugo@josefson.org> (https://www.hugojosefson.com/)",
   "license": "MIT",
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=13.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
-    "@babel/register": "^7.9.0",
-    "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.2.0",
     "coveralls": "^3.0.11",
     "documentation": "^13.0.1",
     "husky": "^4.2.3",
     "lint-staged": "^10.1.0",
-    "mjs-mocha": "^3.0.0",
     "mocha": "^7.1.1",
     "npm-run-all": "^4.1.5",
     "nyc": "^15.0.0",

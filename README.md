@@ -11,13 +11,13 @@ _Generate [duplicati](https://www.duplicati.com/) backup configs from a flat fil
 
 Currently hard-coded for:
 
-- `TargetURL` expected to be for B2 Cloud Storage by Backblaze (`b2://...`).
-- Filter expressions based on using
-    [linuxserver/duplicati](https://hub.docker.com/r/linuxserver/duplicati/) in Docker.
+-   `TargetURL` expected to be for B2 Cloud Storage by Backblaze (`b2://...`).
+-   Filter expressions based on using
+      [linuxserver/duplicati](https://hub.docker.com/r/linuxserver/duplicati/) in Docker.
 
 ## Prerequisite
 
-Node.js, at least `v12.0.0`.
+Node.js, at least `v13.2.0`.
 
 Recommended to install latest via [nvm](https://github.com/creationix/nvm#readme):
 
@@ -56,45 +56,43 @@ Export an existing configuration from duplicati, and use that file.
 
 Example `definitions.txt`:
 
-```
-# 1st line of every block is name of backup set.
-# 2nd line is source directory.
-# Following lines are exclusions.
-# Empty line denotes end of block, and that backup set.
+    # 1st line of every block is name of backup set.
+    # 2nd line is source directory.
+    # Following lines are exclusions.
+    # Empty line denotes end of block, and that backup set.
 
-virtual-machines/Keep to b2 backblaze
-/home/me/virtual-machines/Keep
+    virtual-machines/Keep to b2 backblaze
+    /home/me/virtual-machines/Keep
 
-Videos/programming to b2 backblaze
-/home/me/Videos/Programming
+    Videos/programming to b2 backblaze
+    /home/me/Videos/Programming
 
-Important Downloads to b2 backblaze
-/home/me/Important Downloads
+    Important Downloads to b2 backblaze
+    /home/me/Important Downloads
 
-code/old-stuff to b2 backblaze
-/home/me/code/old-stuff
-*/node_modules/
-*/target/
+    code/old-stuff to b2 backblaze
+    /home/me/code/old-stuff
+    */node_modules/
+    */target/
 
-code to b2 backblaze
-/home/me/code
-/home/me/code/old-stuff/
-*/node_modules/
-*/target/
+    code to b2 backblaze
+    /home/me/code
+    /home/me/code/old-stuff/
+    */node_modules/
+    */target/
 
-/home/me to b2 backblaze
-/home/me
-/home/me/code/
-/home/me/virtual-machines/
-/home/me/Important Downloads/
-/home/me/Downloads/
-/home/me/duplicati/backups/
-/home/me/lost+found/
-/home/me/Videos/
-/home/me/.Trash-1000/
-*/node_modules/
-*/target/
-```
+    /home/me to b2 backblaze
+    /home/me
+    /home/me/code/
+    /home/me/virtual-machines/
+    /home/me/Important Downloads/
+    /home/me/Downloads/
+    /home/me/duplicati/backups/
+    /home/me/lost+found/
+    /home/me/Videos/
+    /home/me/.Trash-1000/
+    */node_modules/
+    */target/
 
 ## Programmatic access
 
@@ -106,12 +104,12 @@ You can also `import` the module, and use its exported functions programmaticall
 
 ##### Table of Contents
 
-- [generateWriteSpecs](#generatewritespecs)
-    - [Parameters](#parameters)
-- [readFile](#readfile)
-    - [Parameters](#parameters-1)
-- [writeFile](#writefile)
-    - [Parameters](#parameters-2)
+-   [generateWriteSpecs](#generatewritespecs)
+    -   [Parameters](#parameters)
+-   [readFile](#readfile)
+    -   [Parameters](#parameters-1)
+-   [writeFile](#writefile)
+    -   [Parameters](#parameters-2)
 
 #### generateWriteSpecs
 
@@ -120,39 +118,17 @@ definitions of what to write to disk.
 
 ##### Parameters
 
-- `options`
-    **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**
-    - `options.template`
-        **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>**
-        Promise of the contents of the duplicati template config file.
-    - `options.definitions`
-        **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>**
-        Promise of the contents of the backup definitions flat file.
-    - `options.outputDir`
-        **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**
-        Where to say in the returned writeDefinition to write the files. (optional, default `"."`)
-    - `options.namePrefix`
-        **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**
-        Prepended to each backup set name the definitions, to the resulting config file. (optional,
-        default `""`)
-    - `options.nameSuffix`
-        **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**
-        Appended to each backup set name the definitions, to the resulting config file. (optional,
-        default `" to b2 backblaze"`)
-    - `options.sourcePathPrefix`
-        **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**
-        Prepended to each source path in the definitions, to the resulting config file. (optional,
-        default `"/source"`)
-    - `options.outputFilenamePrefix`
-        **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**
-        Prepended to each written config filename. (optional, default `""`)
-    - `options.outputFilenameSuffix`
-        **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**
-        Appended to each written config filename. (optional, default `"-duplicati-config.json"`)
+-   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+    -   `options.template` **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** Promise of the contents of the duplicati template config file.
+    -   `options.definitions` **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** Promise of the contents of the backup definitions flat file.
+    -   `options.outputDir` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Where to say in the returned writeDefinition to write the files. (optional, default `"."`)
+    -   `options.namePrefix` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Prepended to each backup set name the definitions, to the resulting config file. (optional, default `""`)
+    -   `options.nameSuffix` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Appended to each backup set name the definitions, to the resulting config file. (optional, default `" to b2 backblaze"`)
+    -   `options.sourcePathPrefix` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Prepended to each source path in the definitions, to the resulting config file. (optional, default `"/source"`)
+    -   `options.outputFilenamePrefix` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Prepended to each written config filename. (optional, default `""`)
+    -   `options.outputFilenameSuffix` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Appended to each written config filename. (optional, default `"-duplicati-config.json"`)
 
-Returns
-**[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;\[{filename,
-contents}]>** A Promise definitions of what to write to disk
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;\[{filename, contents}]>** A Promise definitions of what to write to disk
 
 #### readFile
 
@@ -160,13 +136,9 @@ Reads a file.
 
 ##### Parameters
 
-- `filename`
-    **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**
-    Filename to read from.
+-   `filename` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Filename to read from.
 
-Returns
-**[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>**
-A Promise of the contents of the file.
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** A Promise of the contents of the file.
 
 #### writeFile
 
@@ -174,16 +146,10 @@ Writes to a file.
 
 ##### Parameters
 
-- `filename`
-    **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**
-    Filename to write to.
-- `contents`
-    **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**
-    String to write.
+-   `filename` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Filename to write to.
+-   `contents` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** String to write.
 
-Returns
-**[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>**
-A Promise of the filename written.
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)&lt;[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** A Promise of the filename written.
 
 ### Example API usage
 

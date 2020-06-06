@@ -1,7 +1,8 @@
-import { compose } from 'ramda'
+import ramda from 'ramda'
+
+const { compose } = ramda
 
 const leadingSlashes = /^\/+/
-
 const invalidFilenameChars = /[^a-zA-Z0-9]+/g
 const invalidLeadingFilenameChars = /^[^a-zA-Z0-9]+/
 

@@ -1,13 +1,14 @@
 /* eslint-env mocha */
 
 import chai from 'chai'
-import { path as Rpath, pluck as Rpluck } from 'ramda'
-import { generateWriteSpecs } from '../src/api'
-import { expectToEndWith, expectToNotStartWith, expectToStartWith } from './expectation-utils'
-import templateConfig from './fixtures/template-config'
-import definitions from './fixtures/backup-definitions'
-import expectedWriteSpecs from './fixtures/expected-write-specs'
+import ramda from 'ramda'
+import { generateWriteSpecs } from '../src/api.mjs'
+import { expectToEndWith, expectToNotStartWith, expectToStartWith } from './expectation-utils.mjs'
+import templateConfig from './fixtures/template-config.mjs'
+import definitions from './fixtures/backup-definitions.mjs'
+import expectedWriteSpecs from './fixtures/expected-write-specs.mjs'
 
+const { path: Rpath, pluck: Rpluck } = ramda
 const { expect } = chai
 
 const compare = prop => (a, b) => {

@@ -6,7 +6,7 @@ import {
   cleanHostname,
   filterExpression,
   replaceRegex
-} from '../src/extractable-modules/string-manipulation'
+} from '../src/extractable-modules/string-manipulation.mjs'
 
 const { expect } = chai
 

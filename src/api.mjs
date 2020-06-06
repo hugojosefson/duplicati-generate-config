@@ -14,7 +14,7 @@
  * @returns {Promise.<[{filename, contents}]>} A Promise definitions of what to write to disk
  * @name generateWriteSpecs
  */
-export { default as generateWriteSpecs } from './generate-write-specs'
+export { default as generateWriteSpecs } from './generate-write-specs.mjs'
 
 /**
  * Reads a file.
@@ -23,7 +23,7 @@ export { default as generateWriteSpecs } from './generate-write-specs'
  * @returns {Promise.<String>} A Promise of the contents of the file.
  * @name readFile
  */
-export { default as readFile } from './io/read-file'
+export { default as readFile } from './io/read-file.mjs'
 
 /**
  * Writes to a file.
@@ -33,4 +33,4 @@ export { default as readFile } from './io/read-file'
  * @returns {Promise.<String>} A Promise of the filename written.
  * @name writeFile
  */
-export { default as writeFile } from './io/write-file'
+export { default as writeFile } from './io/write-file.mjs'

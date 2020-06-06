@@ -1,11 +1,13 @@
 import { URL } from 'url'
-import { compose } from 'ramda'
+import ramda from 'ramda'
 import {
   cleanHostname,
   filterExpression,
   prepend,
   removeAnyLeadingSlash
-} from '../extractable-modules/string-manipulation'
+} from '../extractable-modules/string-manipulation.mjs'
+
+const { compose } = ramda
 
 const targetUrl = (templateTargetUrl, name) => {
   const url = new URL(templateTargetUrl)

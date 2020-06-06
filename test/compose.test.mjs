@@ -1,8 +1,9 @@
 /* eslint-env mocha */
 
 import chai from 'chai'
-import { compose } from 'ramda'
+import ramda from 'ramda'
 
+const { compose } = ramda
 const { expect } = chai
 
 describe('compose', () => {

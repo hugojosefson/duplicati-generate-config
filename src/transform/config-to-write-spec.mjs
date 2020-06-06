@@ -1,6 +1,7 @@
-import { path } from 'ramda'
+import ramda from 'ramda'
+import { cleanFilename } from '../extractable-modules/string-manipulation.mjs'
 
-import { cleanFilename } from '../extractable-modules/string-manipulation'
+const { path } = ramda
 
 export default ({
   outputDir = '.',

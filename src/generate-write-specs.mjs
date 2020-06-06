@@ -1,5 +1,5 @@
-import definitionToConfig from './transform/definition-to-config'
-import configToWriteSpec from './transform/config-to-write-spec'
+import definitionToConfig from './transform/definition-to-config.mjs'
+import configToWriteSpec from './transform/config-to-write-spec.mjs'
 
 export default ({
   template: templateFileContentsPromise,
