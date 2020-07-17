@@ -1,6 +1,6 @@
 {
   "name": "@hugojosefson/duplicati-generate-config",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Generate duplicati backup configs from a flat file",
   "main": "src/api.mjs",
   "files": [
